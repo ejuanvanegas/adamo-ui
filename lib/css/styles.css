@@ -1,0 +1,17 @@
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+
+/* Theme old syntax config for backwards compatibility just for dynamic scanning when compiling for dev or prod */
+@config "../../tailwind.config.js";
+
+/* Fonts and themes vars */
+@import "./fonts.css";
+@import "./themes.css";
+
+/* Tailwind new syntax config */
+@import "./tailwind-theme.css";
+
+/* Tailwind base styles */
+@import "./tailwind-base.css";
+
+@custom-variant dark (&:is(.dark *));
