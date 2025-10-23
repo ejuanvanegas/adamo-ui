@@ -1,6 +1,6 @@
-import { THEMES, type Theme } from "@lib/components/types/theme.type";
-import { cn } from "@lib/lib/utils";
-import { capitalize } from "@src/lib/capitalize";
+import { THEMES, type Theme } from "@src/types/theme.type";
+import { cn } from "@src/lib/utils";
+import { capitalize } from "@app/lib/capitalize";
 import { useState, type ComponentProps } from "react";
 
 const TW_PREFIX = "";
@@ -59,8 +59,8 @@ export function HowToUseTokens({ className, ...props }: HowToUseTokensProps) {
 
   return (
     <section className={cn(className)} {...props}>
-      <h2 className="text-3xl font-medium mb-4">Cómo utilizar los tokens</h2>
-      <p className="mb-4">
+      <h2 className="adm:text-3xl adm:font-medium adm:mb-4">Cómo utilizar los tokens</h2>
+      <p className="adm:mb-4">
         El tema se define configurando data-theme en la etiqueta{" "}
         <code>{"<html>...</html>"}</code> por ejemplo{" "}
         <code>{"<html data-theme='risk'>...</html>"}</code>
@@ -69,23 +69,23 @@ export function HowToUseTokens({ className, ...props }: HowToUseTokensProps) {
         Automáticamente los tokens definidos por shadcn/ui toman los valores
         correspondientes al tema. Ejemplo:
       </p>
-      <div className="flex gap-2 items-center">
+      <div className="adm:flex adm:gap-2 adm:items-center">
         <p>Si data-theme="risk" entonces --primary: {risk}</p>
         <div
-          className="size-4 rounded"
+          className="adm:size-4 adm:rounded"
           style={{ backgroundColor: "var(--risk-500)" }}
         >
         </div>
       </div>
-      <div className="flex gap-2 items-center mb-4">
+      <div className="adm:flex adm:gap-2 adm:items-center adm:mb-4">
         <p>Si data-theme="id" entonces --primary: {id}</p>
         <div
-          className="size-4 rounded"
+          className="adm:size-4 adm:rounded"
           style={{ backgroundColor: "var(--id-500)" }}
         >
         </div>
       </div>
-      <p className="mb-4">
+      <p className="adm:mb-4">
         Esto sucede para variables que configura cada tema. Por lo tanto, evitar
         al máximo utilizar tokens arbitrarios como {TW_PREFIX}bg-error-500,{" "}
         {TW_PREFIX}warning-500 y demás. Para eso ya hay definidos tokens como{" "}
@@ -93,7 +93,7 @@ export function HowToUseTokens({ className, ...props }: HowToUseTokensProps) {
         {TW_PREFIX}bg-success y demás. A continuación los tokens:
       </p>
       <select
-        className="mb-4"
+        className="adm:mb-4"
         onChange={(e) => {
           setTheme(e.target.value as Theme);
         }}
@@ -104,18 +104,18 @@ export function HowToUseTokens({ className, ...props }: HowToUseTokensProps) {
       </select>
       <div
         data-theme={theme}
-        className="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-4"
+        className="adm:grid adm:grid-cols-[repeat(auto-fit,minmax(100px,1fr))] adm:gap-4"
       >
         {VARS.map((variable) => (
-          <div className="border">
+          <div className="adm:border">
             <div
-              className="w-full border-b aspect-square"
+              className="adm:w-full adm:border-b adm:aspect-square"
               style={{
                 backgroundColor: `var(--${variable})`,
               }}
             >
             </div>
-            <div className="text-xs p-2">
+            <div className="adm:text-xs adm:p-2">
               <p>{variable}</p>
             </div>
           </div>

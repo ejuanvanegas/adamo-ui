@@ -16,23 +16,26 @@ export default defineConfig({
   resolve: {
     alias: {
       "@src": path.resolve(__dirname, "./src"),
-      "@lib": path.resolve(__dirname, "./lib"),
+      "@app": path.resolve(__dirname, "./app"),
     },
   },
   build: {
     cssCodeSplit: true,
     lib: {
       entry: {
-        button: path.resolve(__dirname, "lib/components/ui/button/index.ts"),
+        button: path.resolve(__dirname, "src/components/ui/button/index.ts"),
         calendar: path.resolve(
           __dirname,
-          "lib/components/ui/calendar/index.ts",
+          "src/components/ui/calendar/index.ts",
         ),
-        dialog: path.resolve(__dirname, "lib/components/ui/dialog/index.ts"),
-        styles: path.resolve(__dirname, "lib/css/styles.css"),
-        "tailwind-theme": path.resolve(__dirname, "lib/css/tailwind-theme.css"),
-        fonts: path.resolve(__dirname, "lib/css/fonts.css"),
-        themes: path.resolve(__dirname, "lib/css/themes.css"),
+        dialog: path.resolve(__dirname, "src/components/ui/dialog/index.ts"),
+        styles: path.resolve(__dirname, "src/index.css"),
+        colors: path.resolve(__dirname, "src/css/colors.css"),
+        fonts: path.resolve(__dirname, "src/css/fonts.css"),
+        radius: path.resolve(__dirname, "src/css/radius.css"),
+        themes: path.resolve(__dirname, "src/css/themes.css"),
+        "tailwind-theme": path.resolve(__dirname, "src/css/tailwind-theme.css"),
+        "tailwind-base": path.resolve(__dirname, "src/css/tailwind-base.css"),
       },
     },
     rollupOptions: {
