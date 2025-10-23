@@ -1,6 +1,6 @@
 {
   "name": "@eatteer/ui",
-  "version": "0.0.29",
+  "version": "0.0.33",
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
@@ -8,12 +8,12 @@
   "types": "./dist/index.d.ts",
   "exports": {
     "./styles.css": "./dist/styles.css",
+    "./custom-layered-styles.css": "./dist/custom-layered-styles.css",
     "./colors.css": "./dist/colors.css",
     "./fonts.css": "./dist/fonts.css",
     "./radius.css": "./dist/radius.css",
     "./themes.css": "./dist/themes.css",
     "./tailwind-theme.css": "./dist/tailwind-theme.css",
-    "./tailwind-base.css": "./dist/tailwind-base.css",
     "./button": {
       "types": "./dist/components/ui/button/button.d.ts",
       "import": "./dist/button.js"

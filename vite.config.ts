@@ -30,12 +30,12 @@ export default defineConfig({
         ),
         dialog: path.resolve(__dirname, "src/components/ui/dialog/index.ts"),
         styles: path.resolve(__dirname, "src/index.css"),
+        "custom-layered-styles": path.resolve(__dirname, "src/custom-layered-index.css"),
         colors: path.resolve(__dirname, "src/css/colors.css"),
         fonts: path.resolve(__dirname, "src/css/fonts.css"),
         radius: path.resolve(__dirname, "src/css/radius.css"),
         themes: path.resolve(__dirname, "src/css/themes.css"),
         "tailwind-theme": path.resolve(__dirname, "src/css/tailwind-theme.css"),
-        "tailwind-base": path.resolve(__dirname, "src/css/tailwind-base.css"),
       },
     },
     rollupOptions: {

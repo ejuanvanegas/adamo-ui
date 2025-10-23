@@ -1,4 +1,10 @@
-@import "tailwindcss" prefix(adm);
+/* https://github.com/tailwindlabs/tailwindcss/discussions/18123#discussioncomment-13245038 */
+@layer adm-theme, adm-base, adm-components, adm-utilities;
+
+@import "tailwindcss/theme.css" layer(adm-theme) prefix(adm);
+@import "tailwindcss/preflight.css" layer(adm-base);
+@import "tailwindcss/utilities.css" layer(adm-utilities) prefix(adm);
+
 @import "tw-animate-css";
 
 @import "./css/radius.css";
@@ -8,7 +14,7 @@
 
 @import "./css/tailwind-theme.css";
 
-@layer base {
+@layer adm-base {
   * {
     /* @apply adm:border-border adm:outline-ring/50; */
     border-color: var(--border);
