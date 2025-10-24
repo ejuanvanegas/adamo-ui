@@ -27,12 +27,12 @@ const variants = [
   "900",
 ];
 
-export type ColorsProps = Readonly<ComponentProps<"section">>;
+export type ColorsSectionProps = Readonly<ComponentProps<"section">>;
 
-export function Colors({ className, ...props }: ColorsProps) {
+export function ColorsSection({ className, ...props }: ColorsSectionProps) {
   return (
     <section className={cn("adm:w-full", className)} {...props}>
-      <h2 className="adm:text-3xl adm:font-medium adm:mb-4">Colors</h2>
+      <h2 className="adm:text-3xl adm:font-bold adm:mb-4">Colors</h2>
       <div className="adm:flex adm:flex-col adm:gap-4">
         {colors.map((color) => {
           return (

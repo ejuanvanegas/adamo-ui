@@ -59,7 +59,7 @@ export function HowToUseTokens({ className, ...props }: HowToUseTokensProps) {
 
   return (
     <section className={cn(className)} {...props}>
-      <h2 className="adm:text-3xl adm:font-medium adm:mb-4">Cómo utilizar los tokens</h2>
+      <h2 className="adm:text-3xl adm:font-bold adm:mb-4">Cómo utilizar los tokens</h2>
       <p className="adm:mb-4">
         El tema se define configurando data-theme en la etiqueta{" "}
         <code>{"<html>...</html>"}</code> por ejemplo{" "}

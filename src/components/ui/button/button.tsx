@@ -8,11 +8,15 @@ import { cn } from "@src/lib/utils";
 import type { Theme } from "@src/types/theme.type";
 
 const buttonVariants = cva(
-  "adm:inline-flex adm:items-center adm:justify-center adm:gap-2 adm:whitespace-nowrap adm:rounded-md adm:text-sm adm:font-medium adm:transition-all adm:disabled:pointer-events-none adm:disabled:opacity-50 adm:[&_svg]:pointer-events-none adm:[&_svg:not([class*=size-])]:size-4 adm:shrink-0 adm:[&_svg]:shrink-0 adm:outline-none adm:focus-visible:border-ring adm:focus-visible:ring-ring/50 adm:focus-visible:ring-[3px] adm:aria-invalid:ring-destructive/20 adm:dark:aria-invalid:ring-destructive/40 adm:aria-invalid:border-destructive",
+  "adm:inline-flex adm:items-center adm:justify-center adm:gap-2 adm:whitespace-nowrap adm:rounded-md adm:text-sm adm:font-semibold adm:transition-all adm:disabled:pointer-events-none adm:disabled:opacity-50 adm:[&_svg]:pointer-events-none adm:[&_svg:not([class*=size-])]:size-4 adm:shrink-0 adm:[&_svg]:shrink-0 adm:outline-none adm:focus-visible:border-ring adm:focus-visible:ring-ring/50 adm:focus-visible:ring-[3px] adm:aria-invalid:ring-destructive/20 adm:dark:aria-invalid:ring-destructive/40 adm:aria-invalid:border-destructive",
   {
     variants: {
       variant: {
         default: "adm:bg-primary adm:text-primary-foreground adm:hover:bg-primary/90",
+        success:
+          "adm:bg-success adm:text-white adm:hover:bg-success/90 adm:focus-visible:ring-success/20 adm:dark:focus-visible:ring-success/40 adm:dark:bg-success/60",
+        warning:
+          "adm:bg-warning adm:text-white adm:hover:bg-warning/90 adm:focus-visible:ring-warning/20 adm:dark:focus-visible:ring-warning/40 adm:dark:bg-warning/60",
         destructive:
           "adm:bg-destructive adm:text-white adm:hover:bg-destructive/90 adm:focus-visible:ring-destructive/20 adm:dark:focus-visible:ring-destructive/40 adm:dark:bg-destructive/60",
         outline:
