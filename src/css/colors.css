@@ -97,6 +97,19 @@
   --error-900: oklch(0.3958 0.1331 25.72);
   --error: var(--error-500);
 
+  /* Destructive color palette */
+  --destructive-25: var(--error-25);
+  --destructive-50: var(--error-50);
+  --destructive-100: var(--error-100);
+  --destructive-200: var(--error-200);
+  --destructive-300: var(--error-300);
+  --destructive-400: var(--error-400);
+  --destructive-500: var(--error-500);
+  --destructive-600: var(--error-600);
+  --destructive-700: var(--error-700);
+  --destructive-800: var(--error-800);
+  --destructive-900: var(--error-900);
+
   /* Warning color palette */
   --warning-25: oklch(0.9934 0.0107 95.16);
   --warning-50: oklch(0.9869 0.0214 95.28);

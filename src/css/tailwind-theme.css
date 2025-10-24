@@ -26,7 +26,7 @@
     --color-chart-3: var(--chart-3);
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
-   
+
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
@@ -142,6 +142,19 @@
     --color-error-700: var(--error-700);
     --color-error-800: var(--error-800);
     --color-error-900: var(--error-900);
+
+    /* Destructive palette tokens */
+    --color-destructive-25: var(--destructive-25);
+    --color-destructive-50: var(--destructive-50);
+    --color-destructive-100: var(--destructive-100);
+    --color-destructive-200: var(--destructive-200);
+    --color-destructive-300: var(--destructive-300);
+    --color-destructive-400: var(--destructive-400);
+    --color-destructive-500: var(--destructive-500);
+    --color-destructive-600: var(--destructive-600);
+    --color-destructive-700: var(--destructive-700);
+    --color-destructive-800: var(--destructive-800);
+    --color-destructive-900: var(--destructive-900);
 
     /* Warning palette tokens */
     --color-warning: var(--warning);

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, MinusIcon } from "lucide-react";
 
 import { cn } from "@src/lib/utils";
 
@@ -12,16 +12,17 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "adm:peer adm:border-input adm:dark:bg-input/30 adm:data-[state=checked]:bg-primary adm:data-[state=checked]:text-primary-foreground adm:dark:data-[state=checked]:bg-primary adm:data-[state=checked]:border-primary adm:focus-visible:border-ring adm:focus-visible:ring-ring/50 adm:aria-invalid:ring-destructive/20 adm:dark:aria-invalid:ring-destructive/40 adm:aria-invalid:border-destructive adm:size-4 adm:shrink-0 adm:rounded-[4px] adm:border adm:shadow-xs adm:transition-shadow adm:outline-none adm:focus-visible:ring-[3px] adm:disabled:cursor-not-allowed adm:disabled:opacity-50",
+        "adm:peer adm:border-input adm:dark:bg-input/30 adm:data-[state=checked]:bg-primary adm:data-[state=checked]:text-primary-foreground adm:dark:data-[state=checked]:bg-primary adm:data-[state=checked]:border-primary adm:focus-visible:border-ring adm:focus-visible:ring-ring/50 adm:aria-invalid:ring-destructive/20 adm:dark:aria-invalid:ring-destructive/40 adm:aria-invalid:border-destructive adm:size-5 adm:shrink-0 adm:rounded-[6px] adm:border adm:shadow-xs adm:transition-shadow adm:outline-none adm:focus-visible:ring-[3px] adm:disabled:cursor-not-allowed adm:disabled:opacity-50",
         className,
       )}
       {...props}
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="adm:grid adm:place-content-center adm:text-current adm:transition-none"
+        className="adm:group adm:grid adm:place-content-center adm:text-current adm:transition-none"
       >
-        <CheckIcon className="adm:size-3.5" />
+        <CheckIcon className={cn("adm:size-3.5", "adm:group-data-[state=indeterminate]:hidden")} />
+        <MinusIcon className={cn("adm:size-3.5 adm:text-primary", "adm:group-data-[state=checked]:hidden")} />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

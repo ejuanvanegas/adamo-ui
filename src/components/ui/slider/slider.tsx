@@ -2,6 +2,7 @@ import * as React from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 
 import { cn } from "@src/lib/utils";
+import type { Theme } from "@src/types/theme.type";
 
 function Slider({
   className,
@@ -9,8 +10,9 @@ function Slider({
   value,
   min = 0,
   max = 100,
+  theme,
   ...props
-}: React.ComponentProps<typeof SliderPrimitive.Root>) {
+}: React.ComponentProps<typeof SliderPrimitive.Root> & { theme?: Theme }) {
   const _values = React.useMemo(
     () =>
       Array.isArray(value)
@@ -24,6 +26,7 @@ function Slider({
   return (
     <SliderPrimitive.Root
       data-slot="slider"
+      data-theme={theme}
       defaultValue={defaultValue}
       value={value}
       min={min}

@@ -12,33 +12,36 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "adm:bg-primary adm:text-primary-foreground adm:hover:bg-primary/90",
+        primary: "adm:bg-primary adm:text-primary-foreground adm:hover:bg-primary-700",
         success:
-          "adm:bg-success adm:text-white adm:hover:bg-success/90 adm:focus-visible:ring-success/20 adm:dark:focus-visible:ring-success/40 adm:dark:bg-success/60",
+          "adm:bg-success adm:text-white adm:hover:bg-success-700 adm:focus-visible:ring-success/20 adm:dark:focus-visible:ring-success/40 adm:dark:bg-success/60",
+        "success-medium": "adm:bg-success-50 adm:text-success adm:hover:bg-success/20 adm:focus-visible:ring-success/20 adm:dark:focus-visible:ring-success/40 adm:dark:bg-success-50/60",
         warning:
-          "adm:bg-warning adm:text-white adm:hover:bg-warning/90 adm:focus-visible:ring-warning/20 adm:dark:focus-visible:ring-warning/40 adm:dark:bg-warning/60",
+          "adm:bg-warning adm:text-white adm:hover:bg-warning-700 adm:focus-visible:ring-warning/20 adm:dark:focus-visible:ring-warning/40 adm:dark:bg-warning/60",
+        "warning-medium": "adm:bg-warning-50 adm:text-warning adm:hover:bg-warning/20 adm:focus-visible:ring-warning/20 adm:dark:focus-visible:ring-warning/40 adm:dark:bg-warning-50/60",
         destructive:
-          "adm:bg-destructive adm:text-white adm:hover:bg-destructive/90 adm:focus-visible:ring-destructive/20 adm:dark:focus-visible:ring-destructive/40 adm:dark:bg-destructive/60",
+          "adm:bg-destructive adm:text-white adm:hover:bg-destructive-700 adm:focus-visible:ring-destructive/20 adm:dark:focus-visible:ring-destructive/40 adm:dark:bg-destructive/60",
+        "destructive-medium": "adm:bg-destructive-50 adm:text-destructive adm:hover:bg-destructive/20 adm:focus-visible:ring-destructive/20 adm:dark:focus-visible:ring-destructive/40 adm:dark:bg-destructive-50/60",
         outline:
           "adm:border adm:bg-background adm:shadow-xs adm:hover:bg-accent adm:hover:text-accent-foreground adm:dark:bg-input/30 adm:dark:border-input adm:dark:hover:bg-input/50",
         secondary:
-          "adm:bg-secondary adm:text-secondary-foreground adm:hover:bg-secondary/80",
+          "adm:bg-secondary adm:text-secondary-foreground adm:hover:bg-primary-200",
         ghost:
           "adm:hover:bg-accent adm:hover:text-accent-foreground adm:dark:hover:bg-accent/50",
         link: "adm:text-primary adm:underline-offset-4 adm:hover:underline",
       },
       size: {
-        default: "adm:h-9 adm:px-4 adm:py-2 adm:has-[>svg]:px-3",
         sm: "adm:h-8 adm:rounded-md adm:gap-1.5 adm:px-3 adm:has-[>svg]:px-2.5",
-        lg: "adm:h-10 adm:rounded-md adm:px-6 adm:has-[>svg]:px-4",
+        md: "adm:h-9 adm:px-3 adm:py-2 adm:has-[>svg]:px-3",
+        lg: "adm:h-10 adm:rounded-md adm:px-4 adm:has-[>svg]:px-4",
         icon: "adm:size-9",
         "icon-sm": "adm:size-8",
         "icon-lg": "adm:size-10",
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: "primary",
+      size: "lg",
     },
   },
 );
