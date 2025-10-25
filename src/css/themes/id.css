@@ -46,9 +46,7 @@
   --primary-800: var(--id-800);
   --primary-900: var(--id-900);
 
-  --warning: var(--warning-500);
   --warning-foreground: oklch(1 0 0);
-  --success: var(--success-500);
   --success-foreground: oklch(1 0 0);
 }
 
@@ -88,8 +86,6 @@
   --sidebar-ring: oklch(0.6861 0.1512 238.3708);
 
   /* Custom vars */
-  --warning: var(--warning-500);
   --warning-foreground: oklch(1 0 0);
-  --success: var(--success-500);
   --success-foreground: oklch(1 0 0);
 }

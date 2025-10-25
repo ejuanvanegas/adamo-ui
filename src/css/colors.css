@@ -109,6 +109,7 @@
   --destructive-700: var(--error-700);
   --destructive-800: var(--error-800);
   --destructive-900: var(--error-900);
+  --destructive: var(--error-500);
 
   /* Warning color palette */
   --warning-25: oklch(0.9934 0.0107 95.16);

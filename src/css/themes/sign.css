@@ -34,9 +34,7 @@
   --sidebar-ring: oklch(0.4976 0.1199 273.8429);
 
   /* Custom vars */
-  --warning: var(--warning-500);
   --warning-foreground: oklch(1 0 0);
-  --success: var(--success-500);
   --success-foreground: oklch(1 0 0);
 
   --primary-25: var(--sign-25);
@@ -88,8 +86,6 @@
   --sidebar-ring: oklch(0.4976 0.1199 273.8429);
 
   /* Custom vars */
-  --warning: var(--warning-500);
   --warning-foreground: oklch(1 0 0);
-  --success: var(--success-500);
   --success-foreground: oklch(1 0 0);
 }
