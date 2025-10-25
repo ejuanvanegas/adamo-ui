@@ -15,6 +15,10 @@
     "./space.css": "./dist/space.css",
     "./themes.css": "./dist/themes.css",
     "./tailwind-theme.css": "./dist/tailwind-theme.css",
+    "./tailwind-fonts.css": "./dist/tailwind-fonts.css",
+    "./tailwind-colors.css": "./dist/tailwind-colors.css",
+    "./tailwind-spacing.css": "./dist/tailwind-spacing.css",
+    "./tailwind-radius.css": "./dist/tailwind-radius.css",
     "./accordion": {
       "types": "./dist/components/ui/accordion/accordion.d.ts",
       "import": "./dist/accordion.js"

@@ -65,6 +65,10 @@ export default defineConfig({
         space: path.resolve(__dirname, "src/css/space.css"),
         themes: path.resolve(__dirname, "src/css/themes.css"),
         "tailwind-theme": path.resolve(__dirname, "src/css/tailwind-theme.css"),
+        "tailwind-fonts": path.resolve(__dirname, "src/css/tailwind-fonts.css"),
+        "tailwind-colors": path.resolve(__dirname, "src/css/tailwind-colors.css"),
+        "tailwind-spacing": path.resolve(__dirname, "src/css/tailwind-spacing.css"),
+        "tailwind-radius": path.resolve(__dirname, "src/css/tailwind-radius.css"),
       },
     },
     rollupOptions: {
