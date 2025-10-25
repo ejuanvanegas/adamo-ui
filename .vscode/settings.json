@@ -1,0 +1,8 @@
+{
+  "tailwindCSS.experimental.configFile": "src/index.css",
+  "files.associations": {
+    "**/src/index.css": "tailwindcss",
+    "**/src/custom-layered-index.css": "tailwindcss",
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}
