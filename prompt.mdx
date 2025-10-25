@@ -1,0 +1,28 @@
+Create the accordion stories.
+
+Make sure to  refer to: 
+- shadcn/ui docs: https://ui.shadcn.com/docs/components/accordion
+- radix ui docs: https://www.radix-ui.com/primitives/docs/components/accordion
+
+Rules:
+- Use the correct components and tailwind prefixed classes
+- Do not add (args types)/controls, just the stories
+- Use proper story name case, only first word capitalized (name: With icon), the component/(story itself) can be named normally (WithIcon)
+- Do not import React directly, instead import what is needed, for example, useState instead of importing all React
+- Add descriptions to all (args types)/controls and stories
+- Render the component correctly in the stories using the render function
+- Name the stories files in kebab-case
+- Setup the component props using the args parameter in the story itself, and destructure the args in the render function, for example:
+
+export const Default: Story = {
+  args: { type: "single", collapsible: true },
+  render: function Render(args) {
+    return (
+      <Accordion
+        {...args}
+        className={cn("adm:w-full")}
+      >
+      </Accordion>
+    );
+  },
+};
