@@ -64,7 +64,7 @@ function ContextMenuSubTrigger({
       data-slot="context-menu-sub-trigger"
       data-inset={inset}
       className={cn(
-        "adm:focus:bg-accent adm:focus:text-accent-foreground adm:data-[state=open]:bg-accent adm:data-[state=open]:text-accent-foreground adm:[&_svg:not([class*=text-])]:text-muted-foreground adm:flex adm:cursor-default adm:items-center adm:rounded-sm adm:px-2 adm:py-1.5 adm:text-sm adm:outline-hidden adm:select-none adm:data-[inset]:pl-8 adm:[&_svg]:pointer-events-none adm:[&_svg]:shrink-0 adm:[&_svg:not([class*=size-])]:size-4",
+        "adm:gap-2 adm:focus:bg-accent adm:focus:text-accent-foreground adm:data-[state=open]:bg-accent adm:data-[state=open]:text-accent-foreground adm:[&_svg:not([class*=text-])]:text-muted-foreground adm:flex adm:cursor-default adm:items-center adm:rounded-sm adm:px-2 adm:py-1.5 adm:text-sm adm:outline-hidden adm:select-none adm:data-[inset]:pl-8 adm:[&_svg]:pointer-events-none adm:[&_svg]:shrink-0 adm:[&_svg:not([class*=size-])]:size-4",
         className,
       )}
       {...props}

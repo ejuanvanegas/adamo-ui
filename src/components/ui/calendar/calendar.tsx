@@ -8,7 +8,6 @@ import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker";
 
 import { cn } from "@src/lib/utils";
 import { Button, buttonVariants } from "@src/components/ui/button";
-import type { Theme } from "@src/types/theme.type";
 
 function Calendar({
   className,
@@ -18,17 +17,14 @@ function Calendar({
   buttonVariant = "ghost",
   formatters,
   components,
-  theme,
   ...props
 }: React.ComponentProps<typeof DayPicker> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"]
-  theme?: Theme
 }) {
   const defaultClassNames = getDefaultClassNames();
 
   return (
     <DayPicker
-      data-theme={theme}
       showOutsideDays={showOutsideDays}
       className={cn(
         "adm:bg-background adm:group/calendar adm:p-3 adm:[--cell-size:--spacing(8)] adm:[[data-slot=card-content]_&]:bg-transparent adm:[[data-slot=popover-content]_&]:bg-transparent",

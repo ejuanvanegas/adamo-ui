@@ -23,6 +23,7 @@ function Checkbox({
       >
         <CheckIcon className={cn("adm:size-3.5", "adm:group-data-[state=indeterminate]:hidden")} />
         <MinusIcon className={cn("adm:size-3.5 adm:text-primary", "adm:group-data-[state=checked]:hidden")} />
+
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

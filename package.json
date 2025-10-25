@@ -12,6 +12,7 @@
     "./colors.css": "./dist/colors.css",
     "./fonts.css": "./dist/fonts.css",
     "./radius.css": "./dist/radius.css",
+    "./space.css": "./dist/space.css",
     "./themes.css": "./dist/themes.css",
     "./tailwind-theme.css": "./dist/tailwind-theme.css",
     "./accordion": {

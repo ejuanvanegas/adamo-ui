@@ -2,17 +2,14 @@ import * as React from "react";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
 
 import { cn } from "@src/lib/utils";
-import type { Theme } from "@src/types/theme.type";
 
 function Switch({
   className,
-  theme,
   ...props
-}: React.ComponentProps<typeof SwitchPrimitive.Root> & { theme?: Theme }) {
+}: React.ComponentProps<typeof SwitchPrimitive.Root>) {
   return (
     <SwitchPrimitive.Root
       data-slot="switch"
-      data-theme={theme}
       className={cn(
         "adm:peer adm:data-[state=checked]:bg-primary adm:data-[state=unchecked]:bg-input adm:focus-visible:border-ring adm:focus-visible:ring-ring/50 adm:dark:data-[state=unchecked]:bg-input/80 adm:inline-flex adm:h-5 adm:w-8 adm:shrink-0 adm:items-center adm:rounded-full adm:border adm:border-transparent adm:shadow-xs adm:transition-all adm:outline-none adm:focus-visible:ring-[3px] adm:disabled:cursor-not-allowed adm:disabled:opacity-50",
         className,

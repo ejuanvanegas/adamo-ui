@@ -62,6 +62,7 @@ export default defineConfig({
         colors: path.resolve(__dirname, "src/css/colors.css"),
         fonts: path.resolve(__dirname, "src/css/fonts.css"),
         radius: path.resolve(__dirname, "src/css/radius.css"),
+        space: path.resolve(__dirname, "src/css/space.css"),
         themes: path.resolve(__dirname, "src/css/themes.css"),
         "tailwind-theme": path.resolve(__dirname, "src/css/tailwind-theme.css"),
       },

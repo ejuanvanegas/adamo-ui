@@ -1,40 +1,53 @@
-import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
 import {
   InputGroup,
-  InputGroupInput,
   InputGroupAddon,
   InputGroupButton,
   InputGroupText,
+  InputGroupInput,
   InputGroupTextarea,
 } from "@src/components/ui/input-group";
 import { Label } from "@src/components/ui/label";
-import { cn } from "@src/lib/utils";
-import { Search, Mail, CreditCard, Info, Star, DollarSign, Send, Copy, Check, HelpCircle } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@src/components/ui/dropdown-menu";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@src/components/ui/tooltip";
+} from "@src/components/ui/tooltip/tooltip";
+import { Spinner } from "@src/components/ui/spinner";
+import { cn } from "@src/lib/utils";
+import {
+  Search,
+  Mail,
+  CreditCard,
+  Check,
+  Star,
+  Info,
+  HelpCircle,
+  MoreHorizontal,
+  ChevronDown,
+  Copy,
+  Eye,
+  EyeOff,
+  Loader,
+  Send,
+  Plus,
+} from "lucide-react";
 
 const meta = {
   title: "Components/Input Group",
   component: InputGroup,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
     docs: {
       description: {
-        component: "Display additional information or actions to an input or textarea. Built with composable components for maximum flexibility.",
-      },
-    },
-  },
-  argTypes: {
-    className: {
-      control: "text",
-      description: "Additional CSS classes to apply to the input group.",
-      table: {
-        type: { summary: "string" },
+        component: "Display additional information or actions to an input or textarea.",
       },
     },
   },
@@ -44,17 +57,20 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: function Render(args) {
+  render: function Render() {
     return (
-      <InputGroup {...args}>
+      <InputGroup>
         <InputGroupInput placeholder="Search..." />
+        <InputGroupAddon>
+          <Search />
+        </InputGroupAddon>
       </InputGroup>
     );
   },
   parameters: {
     docs: {
       description: {
-        story: "A basic input group with a simple input field.",
+        story: "A basic input group with an icon addon.",
       },
     },
   },
@@ -62,22 +78,24 @@ export const Default: Story = {
 
 export const WithIcon: Story = {
   name: "With icon",
-  render: function Render(args) {
+  render: function Render() {
     return (
       <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-6")}>
-        <InputGroup {...args}>
+        <InputGroup>
           <InputGroupInput placeholder="Search..." />
           <InputGroupAddon>
             <Search />
           </InputGroupAddon>
         </InputGroup>
-        <InputGroup {...args}>
+
+        <InputGroup>
           <InputGroupInput type="email" placeholder="Enter your email" />
           <InputGroupAddon>
             <Mail />
           </InputGroupAddon>
         </InputGroup>
-        <InputGroup {...args}>
+
+        <InputGroup>
           <InputGroupInput placeholder="Card number" />
           <InputGroupAddon>
             <CreditCard />
@@ -86,7 +104,8 @@ export const WithIcon: Story = {
             <Check />
           </InputGroupAddon>
         </InputGroup>
-        <InputGroup {...args}>
+
+        <InputGroup>
           <InputGroupInput placeholder="Rating" />
           <InputGroupAddon align="inline-end">
             <Star />
@@ -99,7 +118,7 @@ export const WithIcon: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Input groups with icons positioned at the start or end. Multiple icons can be combined in a single addon.",
+        story: "Input groups with various icon placements and combinations.",
       },
     },
   },
@@ -107,10 +126,10 @@ export const WithIcon: Story = {
 
 export const WithText: Story = {
   name: "With text",
-  render: function Render(args) {
+  render: function Render() {
     return (
       <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-6")}>
-        <InputGroup {...args}>
+        <InputGroup>
           <InputGroupAddon>
             <InputGroupText>$</InputGroupText>
           </InputGroupAddon>
@@ -119,19 +138,30 @@ export const WithText: Story = {
             <InputGroupText>USD</InputGroupText>
           </InputGroupAddon>
         </InputGroup>
-        <InputGroup {...args}>
+
+        <InputGroup>
           <InputGroupAddon>
             <InputGroupText>https://</InputGroupText>
           </InputGroupAddon>
-          <InputGroupInput placeholder="example.com" />
+          <InputGroupInput placeholder="example.com" className={cn("adm:!pl-0.5")} />
           <InputGroupAddon align="inline-end">
             <InputGroupText>.com</InputGroupText>
           </InputGroupAddon>
         </InputGroup>
-        <InputGroup {...args}>
+
+        <InputGroup>
           <InputGroupInput placeholder="Enter your username" />
           <InputGroupAddon align="inline-end">
             <InputGroupText>@company.com</InputGroupText>
+          </InputGroupAddon>
+        </InputGroup>
+
+        <InputGroup>
+          <InputGroupTextarea placeholder="Enter your message" />
+          <InputGroupAddon align="block-end">
+            <InputGroupText className={cn("adm:text-muted-foreground adm:text-xs")}>
+              120 characters left
+            </InputGroupText>
           </InputGroupAddon>
         </InputGroup>
       </div>
@@ -140,7 +170,7 @@ export const WithText: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Display additional text information alongside inputs, such as currency symbols, domains, or email suffixes.",
+        story: "Input groups with text prefixes, suffixes, and character counters.",
       },
     },
   },
@@ -148,17 +178,18 @@ export const WithText: Story = {
 
 export const WithButton: Story = {
   name: "With button",
-  render: function Render(args) {
-    const [copied, setCopied] = useState(false);
+  render: function Render() {
+    const [isCopied, setIsCopied] = useState(false);
 
     const handleCopy = () => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      navigator.clipboard.writeText("https://x.com/shadcn");
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
     };
 
     return (
       <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-6")}>
-        <InputGroup {...args}>
+        <InputGroup>
           <InputGroupInput placeholder="https://x.com/shadcn" readOnly />
           <InputGroupAddon align="inline-end">
             <InputGroupButton
@@ -167,100 +198,24 @@ export const WithButton: Story = {
               size="icon-xs"
               onClick={handleCopy}
             >
-              {copied ? <Check /> : <Copy />}
+              {isCopied ? <Check /> : <Copy />}
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
-        <InputGroup {...args}>
+
+        <InputGroup>
           <InputGroupInput placeholder="Type to search..." />
           <InputGroupAddon align="inline-end">
             <InputGroupButton variant="secondary">Search</InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupAddon>
-            <DollarSign />
-          </InputGroupAddon>
-          <InputGroupInput placeholder="Amount" />
-          <InputGroupAddon align="inline-end">
-            <InputGroupButton size="sm">Send</InputGroupButton>
-          </InputGroupAddon>
-        </InputGroup>
       </div>
     );
   },
   parameters: {
     docs: {
       description: {
-        story: "Add buttons to perform actions within the input group, such as copying, searching, or submitting.",
-      },
-    },
-  },
-};
-
-export const WithPrefix: Story = {
-  name: "With prefix",
-  render: function Render(args) {
-    return (
-      <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-6")}>
-        <InputGroup {...args}>
-          <InputGroupAddon align="inline-start">@</InputGroupAddon>
-          <InputGroupInput placeholder="username" />
-        </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupAddon align="inline-start">
-            <InputGroupText>https://</InputGroupText>
-          </InputGroupAddon>
-          <InputGroupInput placeholder="example.com" />
-        </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupAddon align="inline-start">
-            <Search />
-          </InputGroupAddon>
-          <InputGroupInput placeholder="Search..." />
-        </InputGroup>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Add prefixes to the start of inputs using the inline-start alignment.",
-      },
-    },
-  },
-};
-
-export const WithSuffix: Story = {
-  name: "With suffix",
-  render: function Render(args) {
-    return (
-      <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-6")}>
-        <InputGroup {...args}>
-          <InputGroupInput placeholder="username" />
-          <InputGroupAddon align="inline-end">@company.com</InputGroupAddon>
-        </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupInput placeholder="Amount" />
-          <InputGroupAddon align="inline-end">
-            <InputGroupText>USD</InputGroupText>
-          </InputGroupAddon>
-        </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupInput placeholder="Search..." />
-          <InputGroupAddon align="inline-end">
-            <InputGroupButton size="icon-xs">
-              <Search />
-            </InputGroupButton>
-          </InputGroupAddon>
-        </InputGroup>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Add suffixes to the end of inputs using the inline-end alignment.",
+        story: "Input groups with interactive buttons for various actions.",
       },
     },
   },
@@ -268,10 +223,10 @@ export const WithSuffix: Story = {
 
 export const WithTooltip: Story = {
   name: "With tooltip",
-  render: function Render(args) {
+  render: function Render() {
     return (
       <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-4")}>
-        <InputGroup {...args}>
+        <InputGroup>
           <InputGroupInput placeholder="Enter password" type="password" />
           <InputGroupAddon align="inline-end">
             <Tooltip>
@@ -290,7 +245,8 @@ export const WithTooltip: Story = {
             </Tooltip>
           </InputGroupAddon>
         </InputGroup>
-        <InputGroup {...args}>
+
+        <InputGroup>
           <InputGroupInput placeholder="Your email address" />
           <InputGroupAddon align="inline-end">
             <Tooltip>
@@ -304,10 +260,30 @@ export const WithTooltip: Story = {
                 </InputGroupButton>
               </TooltipTrigger>
               <TooltipContent>
-                <p>We&apos;ll use this to send you notifications</p>
+                <p>We'll use this to send you notifications</p>
               </TooltipContent>
             </Tooltip>
           </InputGroupAddon>
+        </InputGroup>
+
+        <InputGroup>
+          <InputGroupInput placeholder="Enter API key" />
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <InputGroupAddon>
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="Help"
+                  size="icon-xs"
+                >
+                  <HelpCircle />
+                </InputGroupButton>
+              </InputGroupAddon>
+            </TooltipTrigger>
+            <TooltipContent side="left">
+              <p>Click for help with API keys</p>
+            </TooltipContent>
+          </Tooltip>
         </InputGroup>
       </div>
     );
@@ -315,7 +291,7 @@ export const WithTooltip: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Add tooltips to provide additional context or help information.",
+        story: "Input groups with tooltips providing additional context.",
       },
     },
   },
@@ -323,32 +299,27 @@ export const WithTooltip: Story = {
 
 export const WithTextarea: Story = {
   name: "With textarea",
-  render: function Render(args) {
+  render: function Render() {
     return (
-      <div className={cn("adm:grid adm:w-full adm:max-w-md adm:gap-6")}>
-        <InputGroup {...args}>
+      <div className={cn("adm:grid adm:w-full adm:max-w-md adm:gap-4")}>
+        <InputGroup>
           <InputGroupTextarea
-            placeholder="Enter your message"
-            className={cn("adm:min-h-[100px]")}
+            placeholder="console.log('Hello, world!');"
+            className={cn("adm:min-h-[200px]")}
           />
           <InputGroupAddon align="block-end" className={cn("adm:border-t")}>
-            <InputGroupText className={cn("adm:text-muted-foreground adm:text-xs")}>
-              120 characters left
-            </InputGroupText>
+            <InputGroupText>Line 1, Column 1</InputGroupText>
+            <InputGroupButton size="sm" className={cn("adm:ml-auto")} variant="default">
+              Run <Send />
+            </InputGroupButton>
           </InputGroupAddon>
-        </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupTextarea
-            placeholder="Ask, Search or Chat..."
-            className={cn("adm:min-h-[120px]")}
-          />
-          <InputGroupAddon align="block-end">
-            <InputGroupButton
-              variant="primary"
-              className={cn("adm:ml-auto adm:rounded-full")}
-              size="icon-xs"
-            >
-              <Send />
+          <InputGroupAddon align="block-start" className={cn("adm:border-b")}>
+            <InputGroupText className={cn("adm:font-mono adm:font-medium")}>
+              <Search />
+              script.js
+            </InputGroupText>
+            <InputGroupButton className={cn("adm:ml-auto")} size="icon-xs">
+              <Copy />
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
@@ -358,7 +329,57 @@ export const WithTextarea: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Input groups work with textarea components. Use block-start or block-end alignment for vertical positioning.",
+        story: "Input groups with textarea and block-aligned addons.",
+      },
+    },
+  },
+};
+
+export const WithSpinner: Story = {
+  name: "With spinner",
+  render: function Render() {
+    return (
+      <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-4")}>
+        <InputGroup data-disabled>
+          <InputGroupInput placeholder="Searching..." disabled />
+          <InputGroupAddon align="inline-end">
+            <Spinner />
+          </InputGroupAddon>
+        </InputGroup>
+
+        <InputGroup data-disabled>
+          <InputGroupInput placeholder="Processing..." disabled />
+          <InputGroupAddon>
+            <Spinner />
+          </InputGroupAddon>
+        </InputGroup>
+
+        <InputGroup data-disabled>
+          <InputGroupInput placeholder="Saving changes..." disabled />
+          <InputGroupAddon align="inline-end">
+            <InputGroupText>Saving...</InputGroupText>
+            <Spinner />
+          </InputGroupAddon>
+        </InputGroup>
+
+        <InputGroup data-disabled>
+          <InputGroupInput placeholder="Refreshing data..." disabled />
+          <InputGroupAddon>
+            <Loader className={cn("adm:animate-spin")} />
+          </InputGroupAddon>
+          <InputGroupAddon align="inline-end">
+            <InputGroupText className={cn("adm:text-muted-foreground")}>
+              Please wait...
+            </InputGroupText>
+          </InputGroupAddon>
+        </InputGroup>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Input groups with loading spinners for processing states.",
       },
     },
   },
@@ -366,16 +387,17 @@ export const WithTextarea: Story = {
 
 export const WithLabel: Story = {
   name: "With label",
-  render: function Render(args) {
+  render: function Render() {
     return (
       <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-4")}>
-        <InputGroup {...args}>
+        <InputGroup>
           <InputGroupInput id="email" placeholder="shadcn" />
           <InputGroupAddon>
             <Label htmlFor="email">@</Label>
           </InputGroupAddon>
         </InputGroup>
-        <InputGroup {...args}>
+
+        <InputGroup>
           <InputGroupInput id="email-2" placeholder="shadcn@vercel.com" />
           <InputGroupAddon align="block-start">
             <Label htmlFor="email-2" className={cn("adm:text-foreground")}>
@@ -393,7 +415,7 @@ export const WithLabel: Story = {
                 </InputGroupButton>
               </TooltipTrigger>
               <TooltipContent>
-                <p>We&apos;ll use this to send you notifications</p>
+                <p>We'll use this to send you notifications</p>
               </TooltipContent>
             </Tooltip>
           </InputGroupAddon>
@@ -404,29 +426,54 @@ export const WithLabel: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Add labels within input groups to improve accessibility and user experience.",
+        story: "Input groups with labels for improved accessibility.",
       },
     },
   },
 };
 
-export const Disabled: Story = {
-  render: function Render(args) {
+export const WithDropdown: Story = {
+  name: "With dropdown",
+  render: function Render() {
     return (
-      <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-6")}>
+      <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-4")}>
         <InputGroup>
-          <InputGroupInput placeholder="Disabled" disabled />
-        </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupAddon>
-            <Search />
-          </InputGroupAddon>
-          <InputGroupInput placeholder="Disabled with icon" disabled />
-        </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupInput placeholder="Disabled with button" disabled />
+          <InputGroupInput placeholder="Enter file name" />
           <InputGroupAddon align="inline-end">
-            <InputGroupButton disabled>Send</InputGroupButton>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="More"
+                  size="icon-xs"
+                >
+                  <MoreHorizontal />
+                </InputGroupButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>Copy path</DropdownMenuItem>
+                <DropdownMenuItem>Open location</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </InputGroupAddon>
+        </InputGroup>
+
+        <InputGroup className={cn("adm:[--radius:1rem]")}>
+          <InputGroupInput placeholder="Enter search query" />
+          <InputGroupAddon align="inline-end">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <InputGroupButton variant="ghost" className={cn("adm:!pr-1.5 adm:text-xs")}>
+                  Search In... <ChevronDown className={cn("adm:size-3")} />
+                </InputGroupButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className={cn("adm:[--radius:0.95rem]")}>
+                <DropdownMenuItem>Documentation</DropdownMenuItem>
+                <DropdownMenuItem>Blog Posts</DropdownMenuItem>
+                <DropdownMenuItem>Changelog</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </InputGroupAddon>
         </InputGroup>
       </div>
@@ -435,29 +482,37 @@ export const Disabled: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Disabled input groups with reduced opacity and no interaction.",
+        story: "Input groups with dropdown menus for complex interactions.",
       },
     },
   },
 };
 
-export const Invalid: Story = {
-  render: function Render(args) {
+export const PasswordToggle: Story = {
+  name: "Password toggle",
+  render: function Render() {
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
-      <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-6")}>
-        <InputGroup {...args}>
-          <InputGroupInput placeholder="Invalid input" aria-invalid={true} />
-        </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupInput placeholder="Invalid with icon" aria-invalid={true} />
+      <div className={cn("adm:w-full adm:max-w-sm")}>
+        <Label htmlFor="password">Password</Label>
+        <InputGroup className={cn("adm:mt-3")}>
+          <InputGroupInput
+            id="password"
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter your password"
+          />
           <InputGroupAddon align="inline-end">
-            <Info />
-          </InputGroupAddon>
-        </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupInput placeholder="Invalid with button" aria-invalid={true} />
-          <InputGroupAddon align="inline-end">
-            <InputGroupButton>Retry</InputGroupButton>
+            <InputGroupButton
+              variant="ghost"
+              size="icon-xs"
+              onClick={() => setShowPassword(!showPassword)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword
+                ? <EyeOff />
+                : <Eye />}
+            </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
       </div>
@@ -466,41 +521,118 @@ export const Invalid: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Input groups in an error state. Use aria-invalid to indicate validation errors.",
+        story: "A password input with toggle visibility using input group.",
       },
     },
   },
 };
 
-export const Combined: Story = {
-  render: function Render(args) {
+export const SearchWithResults: Story = {
+  name: "Search with results",
+  render: function Render() {
+    const [searchValue, setSearchValue] = useState("");
+    const [results] = useState(["Apple", "Banana", "Cherry", "Date"]);
+
+    const filteredResults = results.filter((item) =>
+      item.toLowerCase().includes(searchValue.toLowerCase()),
+    );
+
     return (
-      <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:gap-6")}>
-        <InputGroup {...args}>
-          <InputGroupAddon>
-            <DollarSign />
-          </InputGroupAddon>
-          <InputGroupInput placeholder="0.00" />
-          <InputGroupAddon align="inline-end">
-            <InputGroupText>USD</InputGroupText>
-          </InputGroupAddon>
-        </InputGroup>
-        <InputGroup {...args}>
-          <InputGroupAddon>
-            <InputGroupText>https://</InputGroupText>
-          </InputGroupAddon>
-          <InputGroupInput placeholder="example" />
-          <InputGroupAddon align="inline-end">
-            <InputGroupText>.com</InputGroupText>
-          </InputGroupAddon>
-        </InputGroup>
-        <InputGroup {...args}>
+      <div className={cn("adm:w-full adm:max-w-sm")}>
+        <InputGroup>
+          <InputGroupInput
+            placeholder="Search..."
+            value={searchValue}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
+          />
           <InputGroupAddon>
             <Search />
           </InputGroupAddon>
-          <InputGroupInput placeholder="Search..." />
           <InputGroupAddon align="inline-end">
-            <InputGroupButton size="sm">Search</InputGroupButton>
+            <InputGroupText>{filteredResults.length} results</InputGroupText>
+          </InputGroupAddon>
+        </InputGroup>
+
+        {searchValue && (
+          <div className={cn("adm:mt-2 adm:text-sm adm:text-muted-foreground")}>
+            {filteredResults.length > 0
+              ? <p>Found {filteredResults.length} results</p>
+              : <p>No results found</p>}
+          </div>
+        )}
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A search input group with live results counter.",
+      },
+    },
+  },
+};
+
+export const ChatInput: Story = {
+  name: "Chat input",
+  render: function Render() {
+    const [message, setMessage] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSend = () => {
+      if (!message.trim()) return;
+      setIsLoading(true);
+      setTimeout(() => {
+        setMessage("");
+        setIsLoading(false);
+      }, 1000);
+    };
+
+    return (
+      <div className={cn("adm:w-full adm:max-w-md")}>
+        <InputGroup>
+          <InputGroupTextarea
+            placeholder="Ask, Search or Chat..."
+            value={message}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
+            className={cn("adm:min-h-[60px]")}
+          />
+          <InputGroupAddon align="block-end">
+            <InputGroupButton
+              variant="outline"
+              className={cn("adm:rounded-full")}
+              size="icon-xs"
+            >
+              <Plus />
+            </InputGroupButton>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <InputGroupButton variant="ghost">Auto</InputGroupButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                side="top"
+                align="start"
+                className={cn("adm:[--radius:0.95rem]")}
+              >
+                <DropdownMenuItem>Auto</DropdownMenuItem>
+                <DropdownMenuItem>Agent</DropdownMenuItem>
+                <DropdownMenuItem>Manual</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <InputGroupText className={cn("adm:ml-auto")}>
+              {message.length}/280
+            </InputGroupText>
+
+            <InputGroupButton
+              variant="default"
+              className={cn("adm:rounded-full")}
+              size="icon-xs"
+              onClick={handleSend}
+              disabled={!message.trim() || isLoading}
+            >
+              {isLoading ? <Spinner /> : <Send />}
+            </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
       </div>
@@ -509,7 +641,7 @@ export const Combined: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Input groups with addons on both sides, combining icons, text, and buttons.",
+        story: "A complex chat input with multiple controls and character counter.",
       },
     },
   },

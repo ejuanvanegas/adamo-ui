@@ -1,5 +1,5 @@
 import { ThemableSection } from "@app/contexts/themable-section";
-import { Switch } from "@src/components/ui/switch";
+import { Switch } from "@src/components/ui/switch/switch";
 import { cn } from "@src/lib/utils";
 import type { ComponentProps } from "react";
 

@@ -1,117 +1,52 @@
+import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   Select,
-  SelectTrigger,
   SelectContent,
-  SelectItem,
   SelectGroup,
+  SelectItem,
   SelectLabel,
-  SelectSeparator,
+  SelectTrigger,
   SelectValue,
 } from "@src/components/ui/select";
 import { Label } from "@src/components/ui/label";
-import { cn } from "@src/lib/utils";
+import { Button } from "@src/components/ui/button";
+import { Card } from "@src/components/ui/card";
+import { Apple, Banana, Cherry, Grape } from "lucide-react";
 
 const meta = {
   title: "Components/Select",
   component: Select,
   tags: ["autodocs"],
-  parameters: {
-    docs: {
-      description: {
-        component: "Displays a list of options for the user to pick from—triggered by a button. Built on top of Radix UI Select primitive.",
-      },
-    },
-  },
-  argTypes: {
-    defaultValue: {
-      control: "text",
-      description: "The value of the select when initially rendered. Use when you do not need to control the state.",
-      table: {
-        type: { summary: "string" },
-      },
-    },
-    value: {
-      control: "text",
-      description: "The controlled value of the select. Must be used with onValueChange.",
-      table: {
-        type: { summary: "string" },
-      },
-    },
-    onValueChange: {
-      description: "Event handler called when the value changes.",
-      control: false,
-      table: {
-        type: { summary: "(value: string) => void" },
-      },
-    },
-    open: {
-      control: "boolean",
-      description: "The controlled open state of the select. Must be used with onOpenChange.",
-      table: {
-        type: { summary: "boolean" },
-      },
-    },
-    defaultOpen: {
-      control: "boolean",
-      description: "The open state of the select when initially rendered. Use when you do not need to control the open state.",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-      },
-    },
-    onOpenChange: {
-      description: "Event handler called when the open state changes.",
-      control: false,
-      table: {
-        type: { summary: "(open: boolean) => void" },
-      },
-    },
-    dir: {
-      control: "radio",
-      options: ["ltr", "rtl"],
-      description: "The reading direction of the select. If omitted, inherits from DirectionProvider or defaults to LTR.",
-      table: {
-        type: { summary: "ltr | rtl" },
-      },
-    },
-    name: {
-      control: "text",
-      description: "The name of the select. Submitted with its owning form as part of a name/value pair.",
-      table: {
-        type: { summary: "string" },
-      },
-    },
-    disabled: {
-      control: "boolean",
-      description: "When true, prevents the user from interacting with the select.",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-      },
-    },
-  },
 } satisfies Meta<typeof Select>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const frameworks = [
-  { value: "next", label: "Next.js" },
-  { value: "react", label: "React" },
-  { value: "svelte", label: "Svelte" },
-  { value: "vue", label: "Vue" },
-  { value: "solid", label: "Solid" },
-  { value: "angular", label: "Angular" },
-  { value: "ember", label: "Ember" },
-] as const;
-
 export const Default: Story = {
-  render: function Render(args) {
+  name: "Default",
+  render: function Render() {
     return (
-      <Select {...args}>
-        <SelectTrigger className={cn("adm:w-[180px]")}>
+      <Select>
+        <SelectTrigger className="adm:w-[180px]">
+          <SelectValue placeholder="Select a theme" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="light">Light</SelectItem>
+          <SelectItem value="dark">Dark</SelectItem>
+          <SelectItem value="system">System</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+  },
+};
+
+export const WithGroups: Story = {
+  name: "With groups",
+  render: function Render() {
+    return (
+      <Select>
+        <SelectTrigger className="adm:w-[200px]">
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent>
@@ -127,50 +62,136 @@ export const Default: Story = {
       </Select>
     );
   },
-  parameters: {
-    docs: {
-      description: {
-        story: "A basic select component with a group of options.",
-      },
-    },
-  },
 };
 
 export const WithLabel: Story = {
   name: "With label",
-  render: function Render(args) {
+  render: function Render() {
     return (
-      <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:items-center adm:gap-1.5")}>
-        <Label htmlFor="framework">Framework</Label>
-        <Select {...args}>
-          <SelectTrigger className={cn("adm:w-[180px]")} id="framework">
-            <SelectValue placeholder="Select framework" />
+      <div className="adm:grid adm:w-full adm:max-w-sm adm:items-center adm:gap-2">
+        <Label htmlFor="email-provider">Email provider</Label>
+        <Select>
+          <SelectTrigger id="email-provider">
+            <SelectValue placeholder="Select a provider" />
           </SelectTrigger>
           <SelectContent>
-            {frameworks.map((framework) => (
-              <SelectItem key={framework.value} value={framework.value}>
-                {framework.label}
-              </SelectItem>
-            ))}
+            <SelectItem value="gmail">Gmail</SelectItem>
+            <SelectItem value="outlook">Outlook</SelectItem>
+            <SelectItem value="yahoo">Yahoo</SelectItem>
+            <SelectItem value="apple">Apple Mail</SelectItem>
           </SelectContent>
         </Select>
       </div>
     );
   },
-  parameters: {
-    docs: {
-      description: {
-        story: "A select component with an associated label for better accessibility.",
-      },
-    },
+};
+
+export const Controlled: Story = {
+  name: "Controlled",
+  render: function Render() {
+    const [value, setValue] = useState("");
+
+    return (
+      <div className="adm:space-y-4">
+        <div>
+          <p className="adm:text-sm adm:font-medium">Selected: {value || "None"}</p>
+        </div>
+        <Select value={value} onValueChange={setValue}>
+          <SelectTrigger className="adm:w-[180px]">
+            <SelectValue placeholder="Select a language" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="javascript">JavaScript</SelectItem>
+            <SelectItem value="typescript">TypeScript</SelectItem>
+            <SelectItem value="python">Python</SelectItem>
+            <SelectItem value="rust">Rust</SelectItem>
+            <SelectItem value="go">Go</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+    );
+  },
+};
+
+export const Disabled: Story = {
+  name: "Disabled",
+  render: function Render() {
+    return (
+      <Select disabled>
+        <SelectTrigger className="adm:w-[180px]">
+          <SelectValue placeholder="Select a theme" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="light">Light</SelectItem>
+          <SelectItem value="dark">Dark</SelectItem>
+          <SelectItem value="system">System</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+  },
+};
+
+export const WithIcons: Story = {
+  name: "With icons",
+  render: function Render() {
+    return (
+      <Select>
+        <SelectTrigger className="adm:w-[200px]">
+          <SelectValue placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">
+            <Apple className="adm:mr-2 adm:h-4 adm:w-4" />
+            Apple
+          </SelectItem>
+          <SelectItem value="banana">
+            <Banana className="adm:mr-2 adm:h-4 adm:w-4" />
+            Banana
+          </SelectItem>
+          <SelectItem value="cherry">
+            <Cherry className="adm:mr-2 adm:h-4 adm:w-4" />
+            Cherry
+          </SelectItem>
+          <SelectItem value="grape">
+            <Grape className="adm:mr-2 adm:h-4 adm:w-4" />
+            Grape
+          </SelectItem>
+          <SelectItem value="lemon">
+            <Cherry className="adm:mr-2 adm:h-4 adm:w-4" />
+            Lemon
+          </SelectItem>
+        </SelectContent>
+      </Select>
+    );
+  },
+};
+
+export const SmallSize: Story = {
+  name: "Small size",
+  render: function Render() {
+    return (
+      <Select>
+        <SelectTrigger size="sm" className="adm:w-[160px]">
+          <SelectValue placeholder="Small select" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="xs">Extra Small</SelectItem>
+          <SelectItem value="sm">Small</SelectItem>
+          <SelectItem value="md">Medium</SelectItem>
+          <SelectItem value="lg">Large</SelectItem>
+          <SelectItem value="xl">Extra Large</SelectItem>
+        </SelectContent>
+      </Select>
+    );
   },
 };
 
 export const Scrollable: Story = {
-  render: function Render(args) {
+  name: "Scrollable",
+  render: function Render() {
     return (
-      <Select {...args}>
-        <SelectTrigger className={cn("adm:w-[280px]")}>
+      <Select>
+        <SelectTrigger className="adm:w-[280px]">
           <SelectValue placeholder="Select a timezone" />
         </SelectTrigger>
         <SelectContent>
@@ -183,7 +204,6 @@ export const Scrollable: Story = {
             <SelectItem value="akst">Alaska Standard Time (AKST)</SelectItem>
             <SelectItem value="hst">Hawaii Standard Time (HST)</SelectItem>
           </SelectGroup>
-          <SelectSeparator />
           <SelectGroup>
             <SelectLabel>Europe & Africa</SelectLabel>
             <SelectItem value="gmt">Greenwich Mean Time (GMT)</SelectItem>
@@ -193,7 +213,6 @@ export const Scrollable: Story = {
             <SelectItem value="cat">Central Africa Time (CAT)</SelectItem>
             <SelectItem value="eat">East Africa Time (EAT)</SelectItem>
           </SelectGroup>
-          <SelectSeparator />
           <SelectGroup>
             <SelectLabel>Asia</SelectLabel>
             <SelectItem value="msk">Moscow Time (MSK)</SelectItem>
@@ -201,9 +220,8 @@ export const Scrollable: Story = {
             <SelectItem value="cst_china">China Standard Time (CST)</SelectItem>
             <SelectItem value="jst">Japan Standard Time (JST)</SelectItem>
             <SelectItem value="kst">Korea Standard Time (KST)</SelectItem>
-            <SelectItem value="wita">Indonesia Central Standard Time (WITA)</SelectItem>
+            <SelectItem value="ist_indonesia">Indonesia Central Standard Time (WITA)</SelectItem>
           </SelectGroup>
-          <SelectSeparator />
           <SelectGroup>
             <SelectLabel>Australia & Pacific</SelectLabel>
             <SelectItem value="awst">Australian Western Standard Time (AWST)</SelectItem>
@@ -212,7 +230,6 @@ export const Scrollable: Story = {
             <SelectItem value="nzst">New Zealand Standard Time (NZST)</SelectItem>
             <SelectItem value="fjt">Fiji Time (FJT)</SelectItem>
           </SelectGroup>
-          <SelectSeparator />
           <SelectGroup>
             <SelectLabel>South America</SelectLabel>
             <SelectItem value="art">Argentina Time (ART)</SelectItem>
@@ -224,199 +241,170 @@ export const Scrollable: Story = {
       </Select>
     );
   },
-  parameters: {
-    docs: {
-      description: {
-        story: "A scrollable select with multiple groups and separators, showcasing the component's ability to handle large lists of options.",
-      },
-    },
-  },
 };
 
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
-  render: function Render(args) {
-    return (
-      <Select {...args}>
-        <SelectTrigger className={cn("adm:w-[180px]")}>
-          <SelectValue placeholder="Select framework" />
-        </SelectTrigger>
-        <SelectContent>
-          {frameworks.map((framework) => (
-            <SelectItem key={framework.value} value={framework.value}>
-              {framework.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "A disabled select that cannot be interacted with.",
-      },
-    },
-  },
-};
-
-export const DisabledItems: Story = {
-  name: "Disabled items",
-  render: function Render(args) {
-    return (
-      <Select {...args}>
-        <SelectTrigger className={cn("adm:w-[180px]")}>
-          <SelectValue placeholder="Select framework" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="next">Next.js</SelectItem>
-          <SelectItem value="react">React</SelectItem>
-          <SelectItem value="svelte" disabled>
-            Svelte (Disabled)
-          </SelectItem>
-          <SelectItem value="vue">Vue</SelectItem>
-          <SelectItem value="solid" disabled>
-            Solid (Disabled)
-          </SelectItem>
-          <SelectItem value="angular">Angular</SelectItem>
-        </SelectContent>
-      </Select>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "A select with specific items disabled while keeping the select itself interactive.",
-      },
-    },
-  },
-};
-
-export const SmallSize: Story = {
-  name: "Small size",
-  render: function Render(args) {
-    return (
-      <Select {...args}>
-        <SelectTrigger className={cn("adm:w-[180px]")} size="sm">
-          <SelectValue placeholder="Select framework" />
-        </SelectTrigger>
-        <SelectContent>
-          {frameworks.map((framework) => (
-            <SelectItem key={framework.value} value={framework.value}>
-              {framework.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "A compact select with the 'sm' size variant for space-constrained layouts.",
-      },
-    },
-  },
-};
-
-export const WithError: Story = {
-  name: "With error",
-  render: function Render(args) {
-    return (
-      <div className={cn("adm:grid adm:w-full adm:max-w-sm adm:items-center adm:gap-1.5")}>
-        <Label htmlFor="framework-error">Framework</Label>
-        <Select {...args}>
-          <SelectTrigger
-            className={cn("adm:w-[180px]")}
-            id="framework-error"
-            aria-invalid="true"
-          >
-            <SelectValue placeholder="Select framework" />
-          </SelectTrigger>
-          <SelectContent>
-            {frameworks.map((framework) => (
-              <SelectItem key={framework.value} value={framework.value}>
-                {framework.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <p className={cn("adm:text-sm adm:font-medium adm:text-destructive")}>
-          Please select a framework
-        </p>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "A select in an error state with validation message. Use aria-invalid to indicate the error state.",
-      },
-    },
-  },
-};
-
-export const DefaultValue: Story = {
-  name: "Default value",
-  args: {
-    defaultValue: "react",
-  },
-  render: function Render(args) {
-    return (
-      <Select {...args}>
-        <SelectTrigger className={cn("adm:w-[180px]")}>
-          <SelectValue placeholder="Select framework" />
-        </SelectTrigger>
-        <SelectContent>
-          {frameworks.map((framework) => (
-            <SelectItem key={framework.value} value={framework.value}>
-              {framework.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "A select with a default value set when initially rendered.",
-      },
-    },
-  },
-};
-
-export const Controlled: Story = {
+export const WithValidation: Story = {
+  name: "With validation",
   render: function Render() {
     const [value, setValue] = useState("");
+    const [error, setError] = useState("");
+
+    const handleValueChange = (newValue: string) => {
+      setValue(newValue);
+      if (error) setError("");
+    };
+
+    const handleValidate = () => {
+      if (!value) {
+        setError("Please select a priority level");
+      }
+      else {
+        setError("");
+      }
+    };
 
     return (
-      <div className={cn("adm:space-y-4")}>
-        <Select value={value} onValueChange={setValue}>
-          <SelectTrigger className={cn("adm:w-[180px]")}>
-            <SelectValue placeholder="Select framework" />
-          </SelectTrigger>
-          <SelectContent>
-            {frameworks.map((framework) => (
-              <SelectItem key={framework.value} value={framework.value}>
-                {framework.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <div className={cn("adm:text-sm adm:text-muted-foreground")}>
-          Selected value: {value || "None"}
+      <div className="adm:space-y-4">
+        <div className="adm:grid adm:w-full adm:max-w-sm adm:items-center adm:gap-2">
+          <Label htmlFor="priority">
+            Priority level <span className="adm:text-destructive">*</span>
+          </Label>
+          <Select value={value} onValueChange={handleValueChange}>
+            <SelectTrigger id="priority" className={error ? "adm:border-destructive" : ""}>
+              <SelectValue placeholder="Select priority" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="low">Low</SelectItem>
+              <SelectItem value="medium">Medium</SelectItem>
+              <SelectItem value="high">High</SelectItem>
+              <SelectItem value="urgent">Urgent</SelectItem>
+            </SelectContent>
+          </Select>
+          {error && (
+            <p className="adm:text-destructive adm:text-sm">{error}</p>
+          )}
         </div>
+        <Button onClick={handleValidate} variant="outline">
+          Validate Selection
+        </Button>
       </div>
     );
   },
-  parameters: {
-    docs: {
-      description: {
-        story: "A controlled select where the value is managed externally using the value and onValueChange props.",
-      },
-    },
+};
+
+export const InCards: Story = {
+  name: "In cards",
+  render: function Render() {
+    const [selectedOptions, setSelectedOptions] = useState({
+      theme: "",
+      size: "",
+      language: "",
+    });
+
+    return (
+      <div className="adm:grid adm:gap-6 adm:md:grid-cols-2 adm:lg:grid-cols-3">
+        <Card className="adm:p-6">
+          <div className="adm:space-y-4">
+            <h3 className="adm:text-lg adm:font-semibold">Theme</h3>
+            <p className="adm:text-muted-foreground adm:text-sm">Choose your preferred theme</p>
+            <Select value={selectedOptions.theme} onValueChange={(value) => setSelectedOptions((prev) => ({ ...prev, theme: value }))}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select theme" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="light">Light</SelectItem>
+                <SelectItem value="dark">Dark</SelectItem>
+                <SelectItem value="system">System</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </Card>
+
+        <Card className="adm:p-6">
+          <div className="adm:space-y-4">
+            <h3 className="adm:text-lg adm:font-semibold">Text Size</h3>
+            <p className="adm:text-muted-foreground adm:text-sm">Adjust text size for better readability</p>
+            <Select value={selectedOptions.size} onValueChange={(value) => setSelectedOptions((prev) => ({ ...prev, size: value }))}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select size" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="small">Small</SelectItem>
+                <SelectItem value="medium">Medium</SelectItem>
+                <SelectItem value="large">Large</SelectItem>
+                <SelectItem value="xl">Extra Large</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </Card>
+
+        <Card className="adm:p-6">
+          <div className="adm:space-y-4">
+            <h3 className="adm:text-lg adm:font-semibold">Language</h3>
+            <p className="adm:text-muted-foreground adm:text-sm">Select your preferred language</p>
+            <Select value={selectedOptions.language} onValueChange={(value) => setSelectedOptions((prev) => ({ ...prev, language: value }))}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select language" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="es">Español</SelectItem>
+                <SelectItem value="fr">Français</SelectItem>
+                <SelectItem value="de">Deutsch</SelectItem>
+                <SelectItem value="ja">日本語</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </Card>
+      </div>
+    );
+  },
+};
+
+export const WithDescriptions: Story = {
+  name: "With descriptions",
+  render: function Render() {
+    return (
+      <div className="adm:grid adm:w-full adm:max-w-md adm:items-center adm:gap-2">
+        <Label htmlFor="notification-frequency">Notification frequency</Label>
+        <Select>
+          <SelectTrigger id="notification-frequency">
+            <SelectValue placeholder="How often should we notify you?" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="realtime">
+              <div className="adm:space-y-1">
+                <div className="adm:font-medium">Real-time</div>
+                <div className="adm:text-muted-foreground adm:text-xs">Get notified instantly</div>
+              </div>
+            </SelectItem>
+            <SelectItem value="hourly">
+              <div className="adm:space-y-1">
+                <div className="adm:font-medium">Hourly</div>
+                <div className="adm:text-muted-foreground adm:text-xs">Digest every hour</div>
+              </div>
+            </SelectItem>
+            <SelectItem value="daily">
+              <div className="adm:space-y-1">
+                <div className="adm:font-medium">Daily</div>
+                <div className="adm:text-muted-foreground adm:text-xs">Summary once per day</div>
+              </div>
+            </SelectItem>
+            <SelectItem value="weekly">
+              <div className="adm:space-y-1">
+                <div className="adm:font-medium">Weekly</div>
+                <div className="adm:text-muted-foreground adm:text-xs">Weekly summary report</div>
+              </div>
+            </SelectItem>
+            <SelectItem value="never">
+              <div className="adm:space-y-1">
+                <div className="adm:font-medium">Never</div>
+                <div className="adm:text-muted-foreground adm:text-xs">No notifications</div>
+              </div>
+            </SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+    );
   },
 };

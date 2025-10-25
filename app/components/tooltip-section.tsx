@@ -1,6 +1,6 @@
 import { ThemableSection } from "@app/contexts/themable-section";
 import { Button } from "@src/components/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@src/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@src/components/ui/tooltip/tooltip";
 
 import { cn } from "@src/lib/utils";
 import type { ComponentProps } from "react";
