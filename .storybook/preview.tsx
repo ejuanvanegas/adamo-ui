@@ -12,7 +12,7 @@ export const globalTypes = {
       items: [
         { value: "default", title: "Default" },
         { value: "sign", title: "Sign" },
-        { value: "id", title: "ID" },
+        { value: "id", title: "Id" },
         { value: "pay", title: "Pay" },
         { value: "risk", title: "Risk" },
       ],

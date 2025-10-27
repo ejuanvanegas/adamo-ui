@@ -37,8 +37,8 @@ export function ColorsSection({ className, ...props }: ColorsSectionProps) {
         {colors.map((color) => {
           return (
             <div className="flex adm:flex-col">
-              <p className="adm:font-medium adm:mb-2">{capitalize(color)}</p>
-              <div className="adm:grid adm:grid-cols-[repeat(auto-fit,minmax(80px,1fr))] adm:gap-4">
+              <p className="adm:text-3xl adm:font-bold adm:mb-2">{capitalize(color)}</p>
+              <div className="adm:grid adm:grid-cols-[repeat(auto-fit,minmax(120px,1fr))] adm:gap-4">
                 {variants.map((variant) => {
                   return (
                     <div className="adm:border">

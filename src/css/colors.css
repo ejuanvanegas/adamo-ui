@@ -27,7 +27,7 @@
   --sign-900: oklch(0.1925 0.0327 274.82);
   --sign: var(--sign-500);
 
-  /* ID color palette */
+  /* Id color palette */
   --id-25: oklch(0.9847 0.0083 236.56);
   --id-50: oklch(0.9771 0.0125 236.62);
   --id-100: oklch(0.9514 0.025 236.82);

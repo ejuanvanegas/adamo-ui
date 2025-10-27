@@ -104,7 +104,7 @@ export function HowToUseTokens({ className, ...props }: HowToUseTokensProps) {
       </select>
       <div
         data-theme={theme}
-        className="adm:grid adm:grid-cols-[repeat(auto-fit,minmax(100px,1fr))] adm:gap-4"
+        className="adm:grid adm:grid-cols-[repeat(auto-fit,minmax(120px,1fr))] adm:gap-4"
       >
         {VARS.map((variable) => (
           <div className="adm:border">
