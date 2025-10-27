@@ -1,15 +1,39 @@
 import * as React from "react";
 
 import { cn } from "@src/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+const CardVariants = cva(
+  "adm:bg-card adm:text-card-foreground adm:flex adm:flex-col adm:gap-6 adm:rounded-xl adm:border adm:py-6 adm:shadow-sm",
+  {
+    variants: {
+      variant: {
+        default: "adm:bg-card adm:text-card-foreground",
+        primary:
+          "adm:bg-primary-50 adm:[&>svg]:text-current adm:*:data-[slot=alert-description]:text-primary/90",
+        success:
+          "adm:bg-success-50 adm:[&>svg]:text-current adm:*:data-[slot=alert-description]:text-success/90",
+        warning:
+          "adm:bg-warning-50 adm:[&>svg]:text-current adm:*:data-[slot=alert-description]:text-warning/90",
+        destructive:
+          "adm:bg-destructive-50 adm:[&>svg]:text-current adm:*:data-[slot=alert-description]:text-destructive/90",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  },
+);
+
+function Card({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<"div"> & VariantProps<typeof CardVariants>) {
   return (
     <div
       data-slot="card"
-      className={cn(
-        "adm:bg-card adm:text-card-foreground adm:flex adm:flex-col adm:gap-6 adm:rounded-xl adm:border adm:py-6 adm:shadow-sm",
-        className,
-      )}
+      className={cn(CardVariants({ variant }), className)}
       {...props}
     />
   );

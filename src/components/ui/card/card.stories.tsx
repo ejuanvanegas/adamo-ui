@@ -25,13 +25,23 @@ import {
   ShareIcon,
   StarIcon,
   UserIcon,
+  AlertTriangleIcon,
+  XCircleIcon,
+  InfoIcon,
+  CheckCircleIcon,
 } from "lucide-react";
 
 const meta: Meta<typeof Card> = {
   title: "Components/Card",
   component: Card,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["default", "primary", "success", "warning", "destructive"],
+      description: "La variante visual de la card",
+    },
+  },
 };
 
 export default meta;
@@ -59,6 +69,227 @@ export const Default: Story = {
     docs: {
       description: {
         story: "A basic card with header, content, and footer sections.",
+      },
+    },
+  },
+};
+
+export const AllVariants: Story = {
+  name: "All Variants",
+  render: function Render() {
+    return (
+      <div className="adm:grid adm:gap-6 adm:grid-cols-1 md:adm:grid-cols-2 lg:adm:grid-cols-3">
+        <Card variant="default" className="adm:w-full">
+          <CardHeader>
+            <CardTitle>Default</CardTitle>
+            <CardDescription>Standard card variant</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="adm:text-sm">
+              This is the default card appearance with standard styling.
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Button variant="outline" size="sm">Action</Button>
+          </CardFooter>
+        </Card>
+
+        <Card variant="primary" className="adm:w-full">
+          <CardHeader>
+            <InfoIcon className="adm:h-5 adm:w-5" />
+            <CardTitle>Primary</CardTitle>
+            <CardDescription>Primary information variant</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="adm:text-sm">
+              Use this variant to highlight important information or primary content.
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Button size="sm">Learn More</Button>
+          </CardFooter>
+        </Card>
+
+        <Card variant="success" className="adm:w-full">
+          <CardHeader>
+            <CheckCircleIcon className="adm:h-5 adm:w-5" />
+            <CardTitle>Success</CardTitle>
+            <CardDescription>Success message variant</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="adm:text-sm">
+              Perfect for displaying successful operations or positive confirmations.
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Button variant="outline" size="sm">Continue</Button>
+          </CardFooter>
+        </Card>
+
+        <Card variant="warning" className="adm:w-full">
+          <CardHeader>
+            <AlertTriangleIcon className="adm:h-5 adm:w-5" />
+            <CardTitle>Warning</CardTitle>
+            <CardDescription>Warning or caution variant</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="adm:text-sm">
+              Use this to draw attention to warnings or important notices.
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Button variant="outline" size="sm">Review</Button>
+          </CardFooter>
+        </Card>
+
+        <Card variant="destructive" className="adm:w-full">
+          <CardHeader>
+            <XCircleIcon className="adm:h-5 adm:w-5" />
+            <CardTitle>Destructive</CardTitle>
+            <CardDescription>Error or destructive action variant</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="adm:text-sm">
+              Ideal for error messages or destructive actions that need attention.
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Button variant="destructive" size="sm">Delete</Button>
+          </CardFooter>
+        </Card>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Overview of all available card variants with their respective color schemes and use cases.",
+      },
+    },
+  },
+};
+
+export const Primary: Story = {
+  name: "Primary",
+  render: function Render() {
+    return (
+      <Card className="adm:w-[350px]" variant="primary">
+        <CardHeader>
+          <InfoIcon className="adm:h-5 adm:w-5" />
+          <CardTitle>Important Information</CardTitle>
+          <CardDescription>Please read this carefully</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="adm:text-sm">
+            This is important information that requires your attention.
+            Make sure to review all details before proceeding.
+          </p>
+        </CardContent>
+        <CardFooter>
+          <Button>Acknowledge</Button>
+        </CardFooter>
+      </Card>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A primary variant card for highlighting important information.",
+      },
+    },
+  },
+};
+
+export const Success: Story = {
+  name: "Success",
+  render: function Render() {
+    return (
+      <Card className="adm:w-[350px]" variant="success">
+        <CardHeader>
+          <CheckCircleIcon className="adm:h-5 adm:w-5" />
+          <CardTitle>Payment Successful</CardTitle>
+          <CardDescription>Your transaction has been completed</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="adm:text-sm">
+            Your payment of $299.99 has been processed successfully.
+            You will receive a confirmation email shortly.
+          </p>
+        </CardContent>
+        <CardFooter>
+          <Button variant="outline">View Receipt</Button>
+        </CardFooter>
+      </Card>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A success variant card for confirming successful operations.",
+      },
+    },
+  },
+};
+
+export const Warning: Story = {
+  name: "Warning",
+  render: function Render() {
+    return (
+      <Card className="adm:w-[350px]" variant="warning">
+        <CardHeader>
+          <AlertTriangleIcon className="adm:h-5 adm:w-5" />
+          <CardTitle>Storage Almost Full</CardTitle>
+          <CardDescription>You're running out of space</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="adm:text-sm">
+            You've used 95% of your available storage.
+            Consider upgrading your plan or deleting unused files.
+          </p>
+        </CardContent>
+        <CardFooter className="adm:gap-2">
+          <Button variant="outline" size="sm">Manage Storage</Button>
+          <Button size="sm">Upgrade Plan</Button>
+        </CardFooter>
+      </Card>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A warning variant card for cautionary messages.",
+      },
+    },
+  },
+};
+
+export const Destructive: Story = {
+  name: "Destructive",
+  render: function Render() {
+    return (
+      <Card className="adm:w-[350px]" variant="destructive">
+        <CardHeader>
+          <XCircleIcon className="adm:h-5 adm:w-5" />
+          <CardTitle>Delete Account</CardTitle>
+          <CardDescription>This action cannot be undone</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="adm:text-sm">
+            Are you sure you want to permanently delete your account?
+            All your data will be lost forever.
+          </p>
+        </CardContent>
+        <CardFooter className="adm:gap-2">
+          <Button variant="outline" size="sm">Cancel</Button>
+          <Button variant="destructive" size="sm">Delete Account</Button>
+        </CardFooter>
+      </Card>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A destructive variant card for critical or destructive actions.",
       },
     },
   },
