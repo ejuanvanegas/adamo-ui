@@ -13,6 +13,8 @@ const cardVariants = cva(
         default: "adm:bg-card adm:text-card-foreground",
         primary:
           "adm:bg-primary-50 adm:[&>svg]:text-current adm:*:data-[slot=alert-description]:text-primary/90",
+        muted:
+          "adm:bg-muted adm:[&>svg]:text-current adm:*:data-[slot=alert-description]:text-muted/90",
         success:
           "adm:bg-success-50 adm:[&>svg]:text-current adm:*:data-[slot=alert-description]:text-success/90",
         warning:

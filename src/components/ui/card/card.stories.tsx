@@ -142,6 +142,18 @@ export const AllVariants: Story = {
             <Button variant="destructive" size="sm">Delete</Button>
           </CardFooter>
         </Card>
+
+        <Card variant="muted" className="adm:w-full">
+          <CardHeader>
+            <CardTitle>Muted</CardTitle>
+            <CardDescription>Subtle or less important information variant</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="adm:text-sm">
+              Ideal for displaying less prominent information that doesn't require immediate attention.
+            </p>
+          </CardContent>
+        </Card>
       </div>
     );
   },
