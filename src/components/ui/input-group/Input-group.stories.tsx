@@ -38,6 +38,7 @@ import {
   Loader,
   Send,
   Plus,
+  Forward,
 } from "lucide-react";
 
 const meta = {
@@ -143,7 +144,7 @@ export const WithText: Story = {
           <InputGroupAddon>
             <InputGroupText>https://</InputGroupText>
           </InputGroupAddon>
-          <InputGroupInput placeholder="example.com" className={cn("adm:!pl-0.5")} />
+          <InputGroupInput placeholder="example.com" />
           <InputGroupAddon align="inline-end">
             <InputGroupText>.com</InputGroupText>
           </InputGroupAddon>
@@ -459,16 +460,16 @@ export const WithDropdown: Story = {
           </InputGroupAddon>
         </InputGroup>
 
-        <InputGroup className={cn("adm:[--radius:1rem]")}>
+        <InputGroup>
           <InputGroupInput placeholder="Enter search query" />
           <InputGroupAddon align="inline-end">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <InputGroupButton variant="ghost" className={cn("adm:!pr-1.5 adm:text-xs")}>
+                <InputGroupButton variant="ghost" className={cn("adm:text-xs")}>
                   Search In... <ChevronDown className={cn("adm:size-3")} />
                 </InputGroupButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className={cn("adm:[--radius:0.95rem]")}>
+              <DropdownMenuContent align="end">
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
                 <DropdownMenuItem>Blog Posts</DropdownMenuItem>
                 <DropdownMenuItem>Changelog</DropdownMenuItem>
@@ -612,7 +613,6 @@ export const ChatInput: Story = {
               <DropdownMenuContent
                 side="top"
                 align="start"
-                className={cn("adm:[--radius:0.95rem]")}
               >
                 <DropdownMenuItem>Auto</DropdownMenuItem>
                 <DropdownMenuItem>Agent</DropdownMenuItem>
@@ -631,7 +631,7 @@ export const ChatInput: Story = {
               onClick={handleSend}
               disabled={!message.trim() || isLoading}
             >
-              {isLoading ? <Spinner /> : <Send />}
+              {isLoading ? <Spinner /> : <Forward />}
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>

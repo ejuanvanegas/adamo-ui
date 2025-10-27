@@ -25,23 +25,12 @@ import {
   ShareIcon,
   StarIcon,
   UserIcon,
-  AlertTriangleIcon,
-  XCircleIcon,
-  InfoIcon,
-  CheckCircleIcon,
 } from "lucide-react";
 
 const meta: Meta<typeof Card> = {
   title: "Components/Card",
   component: Card,
   tags: ["autodocs"],
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["default", "primary", "success", "warning", "destructive"],
-      description: "La variante visual de la card",
-    },
-  },
 };
 
 export default meta;
@@ -96,7 +85,6 @@ export const AllVariants: Story = {
 
         <Card variant="primary" className="adm:w-full">
           <CardHeader>
-            <InfoIcon className="adm:h-5 adm:w-5" />
             <CardTitle>Primary</CardTitle>
             <CardDescription>Primary information variant</CardDescription>
           </CardHeader>
@@ -112,7 +100,6 @@ export const AllVariants: Story = {
 
         <Card variant="success" className="adm:w-full">
           <CardHeader>
-            <CheckCircleIcon className="adm:h-5 adm:w-5" />
             <CardTitle>Success</CardTitle>
             <CardDescription>Success message variant</CardDescription>
           </CardHeader>
@@ -128,7 +115,6 @@ export const AllVariants: Story = {
 
         <Card variant="warning" className="adm:w-full">
           <CardHeader>
-            <AlertTriangleIcon className="adm:h-5 adm:w-5" />
             <CardTitle>Warning</CardTitle>
             <CardDescription>Warning or caution variant</CardDescription>
           </CardHeader>
@@ -144,7 +130,6 @@ export const AllVariants: Story = {
 
         <Card variant="destructive" className="adm:w-full">
           <CardHeader>
-            <XCircleIcon className="adm:h-5 adm:w-5" />
             <CardTitle>Destructive</CardTitle>
             <CardDescription>Error or destructive action variant</CardDescription>
           </CardHeader>
@@ -175,7 +160,6 @@ export const Primary: Story = {
     return (
       <Card className="adm:w-[350px]" variant="primary">
         <CardHeader>
-          <InfoIcon className="adm:h-5 adm:w-5" />
           <CardTitle>Important Information</CardTitle>
           <CardDescription>Please read this carefully</CardDescription>
         </CardHeader>
@@ -206,7 +190,6 @@ export const Success: Story = {
     return (
       <Card className="adm:w-[350px]" variant="success">
         <CardHeader>
-          <CheckCircleIcon className="adm:h-5 adm:w-5" />
           <CardTitle>Payment Successful</CardTitle>
           <CardDescription>Your transaction has been completed</CardDescription>
         </CardHeader>
@@ -237,7 +220,6 @@ export const Warning: Story = {
     return (
       <Card className="adm:w-[350px]" variant="warning">
         <CardHeader>
-          <AlertTriangleIcon className="adm:h-5 adm:w-5" />
           <CardTitle>Storage Almost Full</CardTitle>
           <CardDescription>You're running out of space</CardDescription>
         </CardHeader>
@@ -269,7 +251,6 @@ export const Destructive: Story = {
     return (
       <Card className="adm:w-[350px]" variant="destructive">
         <CardHeader>
-          <XCircleIcon className="adm:h-5 adm:w-5" />
           <CardTitle>Delete Account</CardTitle>
           <CardDescription>This action cannot be undone</CardDescription>
         </CardHeader>

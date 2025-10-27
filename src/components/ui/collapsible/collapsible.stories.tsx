@@ -58,12 +58,12 @@ export const Controlled: Story = {
         onOpenChange={setIsOpen}
         className="adm:flex adm:w-[350px] adm:flex-col adm:gap-2"
       >
-        <div className="adm:flex adm:items-center adm:justify-between adm:gap-4 adm:px-4">
+        <div className="adm:flex adm:items-center adm:justify-between adm:gap-4">
           <h4 className="adm:text-sm adm:font-semibold">
             @peduarte starred 3 repositories
           </h4>
           <CollapsibleTrigger asChild>
-            <Button variant="ghost" size="sm" className="adm:size-8">
+            <Button variant="outline" size="sm" className="adm:size-8">
               <ChevronsUpDownIcon />
               <span className="adm:sr-only">Toggle</span>
             </Button>

@@ -34,8 +34,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: { type: "single", collapsible: true },
   name: "Default",
+  args: { type: "single", collapsible: true },
   render: function Render(args) {
     return (
       <Accordion {...args} className={cn("adm:w-full")}>
@@ -63,8 +63,8 @@ export const Default: Story = {
 };
 
 export const WithDefaultValue: Story = {
-  args: { type: "single", defaultValue: "item-2", collapsible: true },
   name: "With default value",
+  args: { type: "single", defaultValue: "item-2", collapsible: true },
   render: function Render(args) {
     return (
       <Accordion {...args} className={cn("adm:w-full")}>
@@ -92,8 +92,8 @@ export const WithDefaultValue: Story = {
 };
 
 export const MultipleType: Story = {
-  args: { type: "multiple" },
   name: "Multiple type",
+  args: { type: "multiple" },
   render: function Render(args) {
     return (
       <Accordion {...args} className={cn("adm:w-full")}>
@@ -145,8 +145,8 @@ export const MultipleType: Story = {
 };
 
 export const NonCollapsible: Story = {
-  args: { type: "single", collapsible: false, defaultValue: "item-1" },
   name: "Non-collapsible",
+  args: { type: "single", collapsible: false, defaultValue: "item-1" },
   render: function Render(args) {
     return (
       <Accordion {...args} className={cn("adm:w-full")}>
@@ -177,8 +177,8 @@ export const NonCollapsible: Story = {
 };
 
 export const ControlledAccordion: Story = {
-  args: { type: "single", collapsible: true },
   name: "Controlled",
+  args: { type: "single", collapsible: true },
   render: function Render() {
     const [value, setValue] = useState<string | undefined>("item-1");
 
@@ -241,8 +241,8 @@ export const ControlledAccordion: Story = {
 };
 
 export const ProductInformation: Story = {
-  args: { type: "single", collapsible: true },
   name: "Product information",
+  args: { type: "single", collapsible: true },
   render: function Render() {
     return (
       <Card className="adm:w-full adm:max-w-2xl">
@@ -404,8 +404,8 @@ export const ProductInformation: Story = {
 };
 
 export const ProjectTimeline: Story = {
-  args: { type: "single", collapsible: true },
   name: "Project timeline",
+  args: { type: "single", collapsible: true },
   render: function Render() {
     const phases = [
       {
@@ -555,8 +555,8 @@ export const ProjectTimeline: Story = {
 };
 
 export const LearningCourse: Story = {
-  args: { type: "single", collapsible: true },
   name: "Learning course",
+  args: { type: "single", collapsible: true },
   render: function Render() {
     const modules = [
       {
