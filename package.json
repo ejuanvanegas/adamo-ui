@@ -164,6 +164,7 @@
     "build": "cross-env BUILD_LIB=true vite build && npm run build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

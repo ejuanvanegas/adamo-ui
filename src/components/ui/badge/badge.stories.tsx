@@ -216,34 +216,34 @@ export const Large: Story = {
 
 export const VariantsAndSizes: Story = {
   name: "Variants and sizes",
-  render: function Render(args) {
+  render: function Render() {
     return (
       <div className={cn("adm:space-y-4")}>
         <div className={cn("adm:flex adm:gap-2 adm:flex-wrap")}>
-          <Badge {...args}>Default</Badge>
-          <Badge {...args} variant="default-medium">Default Medium</Badge>
-          <Badge {...args} variant="secondary">Secondary</Badge>
-          <Badge {...args} variant="success">Success</Badge>
-          <Badge {...args} variant="success-medium">Success Medium</Badge>
-          <Badge {...args} variant="warning">Warning</Badge>
-          <Badge {...args} variant="warning-medium">Warning Medium</Badge>
-          <Badge {...args} variant="destructive">Destructive</Badge>
-          <Badge {...args} variant="destructive-medium">Destructive Medium</Badge>
-          <Badge {...args} variant="muted">Muted</Badge>
-          <Badge {...args} variant="outline">Outline</Badge>
+          <Badge>Default</Badge>
+          <Badge variant="default-medium">Default Medium</Badge>
+          <Badge variant="secondary">Secondary</Badge>
+          <Badge variant="success">Success</Badge>
+          <Badge variant="success-medium">Success Medium</Badge>
+          <Badge variant="warning">Warning</Badge>
+          <Badge variant="warning-medium">Warning Medium</Badge>
+          <Badge variant="destructive">Destructive</Badge>
+          <Badge variant="destructive-medium">Destructive Medium</Badge>
+          <Badge variant="muted">Muted</Badge>
+          <Badge variant="outline">Outline</Badge>
         </div>
         <div className={cn("adm:flex adm:gap-2 adm:flex-wrap")}>
-          <Badge {...args} size="lg">Default Large</Badge>
-          <Badge {...args} size="lg" variant="default-medium">Default Medium</Badge>
-          <Badge {...args} size="lg" variant="secondary">Secondary</Badge>
-          <Badge {...args} size="lg" variant="success">Success</Badge>
-          <Badge {...args} size="lg" variant="success-medium">Success Medium</Badge>
-          <Badge {...args} size="lg" variant="warning">Warning</Badge>
-          <Badge {...args} size="lg" variant="warning-medium">Warning Medium</Badge>
-          <Badge {...args} size="lg" variant="destructive">Destructive</Badge>
-          <Badge {...args} size="lg" variant="destructive-medium">Destructive Medium</Badge>
-          <Badge {...args} size="lg" variant="muted">Muted</Badge>
-          <Badge {...args} size="lg" variant="outline">Outline</Badge>
+          <Badge size="lg">Default Large</Badge>
+          <Badge size="lg" variant="default-medium">Default Medium</Badge>
+          <Badge size="lg" variant="secondary">Secondary</Badge>
+          <Badge size="lg" variant="success">Success</Badge>
+          <Badge size="lg" variant="success-medium">Success Medium</Badge>
+          <Badge size="lg" variant="warning">Warning</Badge>
+          <Badge size="lg" variant="warning-medium">Warning Medium</Badge>
+          <Badge size="lg" variant="destructive">Destructive</Badge>
+          <Badge size="lg" variant="destructive-medium">Destructive Medium</Badge>
+          <Badge size="lg" variant="muted">Muted</Badge>
+          <Badge size="lg" variant="outline">Outline</Badge>
         </div>
       </div>
     );
@@ -259,41 +259,41 @@ export const VariantsAndSizes: Story = {
 
 export const WithIcon: Story = {
   name: "With icon",
-  render: function Render(args) {
+  render: function Render() {
     return (
       <div className="adm:space-y-4">
         <div className={cn("adm:flex adm:gap-2 adm:flex-wrap")}>
-          <Badge {...args} variant="default">
+          <Badge variant="default">
             <CheckIcon />
             Verified
           </Badge>
-          <Badge {...args} variant="secondary">
+          <Badge variant="secondary">
             <StarIcon />
             Featured
           </Badge>
-          <Badge {...args} variant="destructive">
+          <Badge variant="destructive">
             <XIcon />
             Error
           </Badge>
-          <Badge {...args} variant="outline">
+          <Badge variant="outline">
             <AlertCircleIcon />
             Warning
           </Badge>
         </div>
         <div className={cn("adm:flex adm:gap-2 adm:flex-wrap")}>
-          <Badge {...args} size="lg" variant="default-medium">
+          <Badge size="lg" variant="default-medium">
             <CheckIcon />
             Verified
           </Badge>
-          <Badge {...args} size="lg" variant="secondary">
+          <Badge size="lg" variant="secondary">
             <StarIcon />
             Featured
           </Badge>
-          <Badge {...args} size="lg" variant="destructive-medium">
+          <Badge size="lg" variant="destructive-medium">
             <XIcon />
             Error
           </Badge>
-          <Badge {...args} size="lg" variant="outline">
+          <Badge size="lg" variant="outline">
             <AlertCircleIcon />
             Warning
           </Badge>

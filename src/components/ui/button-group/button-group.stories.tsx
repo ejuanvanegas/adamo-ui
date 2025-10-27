@@ -346,6 +346,7 @@ export const TextFormatting: Story = {
       italic: false,
       underline: false,
     });
+
     const [alignment, setAlignment] = useState("left");
 
     return (
@@ -554,17 +555,6 @@ export const AllOrientations: Story = {
             <Button variant="outline">First</Button>
             <Button variant="outline">Second</Button>
             <Button variant="outline">Third</Button>
-          </ButtonGroup>
-        </div>
-
-        <div>
-          <h4 className="adm:text-sm adm:font-medium adm:mb-2">With Separators</h4>
-          <ButtonGroup>
-            <Button variant="secondary">Copy</Button>
-            <ButtonGroupSeparator />
-            <Button variant="secondary">Paste</Button>
-            <ButtonGroupSeparator />
-            <Button variant="secondary">Cut</Button>
           </ButtonGroup>
         </div>
 

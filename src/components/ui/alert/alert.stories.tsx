@@ -63,8 +63,8 @@ export const Default: Story = {
 };
 
 export const Destructive: Story = {
-  args: { variant: "destructive" },
   name: "Destructive",
+  args: { variant: "destructive" },
   render: (args) => {
     return (
       <Alert variant={args.variant}>
@@ -79,8 +79,8 @@ export const Destructive: Story = {
 };
 
 export const Success: Story = {
-  args: { variant: "success" },
   name: "Success",
+  args: { variant: "success" },
   render: (args) => {
     return (
       <Alert variant={args.variant}>
@@ -95,8 +95,8 @@ export const Success: Story = {
 };
 
 export const Warning: Story = {
-  args: { variant: "warning" },
   name: "Warning",
+  args: { variant: "warning" },
   render: (args) => {
     return (
       <Alert variant={args.variant}>
@@ -125,8 +125,8 @@ export const WithoutIcon: Story = {
 };
 
 export const TitleOnly: Story = {
-  args: { variant: "success" },
   name: "Title only",
+  args: { variant: "success" },
   render: (args) => {
     return (
       <Alert variant={args.variant}>
@@ -193,8 +193,8 @@ export const AllVariants: Story = {
 };
 
 export const SecurityAlert: Story = {
-  args: { variant: "destructive" },
   name: "Security alert",
+  args: { variant: "destructive" },
   render: (args) => {
     return (
       <Alert variant={args.variant}>

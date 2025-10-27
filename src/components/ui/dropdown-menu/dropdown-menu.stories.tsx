@@ -17,7 +17,6 @@ import {
   DropdownMenuTrigger,
 } from "@src/components/ui/dropdown-menu";
 import { Button } from "@src/components/ui/button";
-import { Avatar } from "@src/components/ui/avatar";
 import { useState } from "react";
 import {
   ChevronDownIcon,
@@ -253,9 +252,7 @@ export const UserMenu: Story = {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="adm:h-8 adm:w-8 adm:rounded-full">
-            <Avatar className="adm:h-8 adm:w-8">
-              <UserIcon />
-            </Avatar>
+            <UserIcon />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="adm:w-56" align="end" forceMount>
