@@ -57,16 +57,16 @@ const fieldVariants = cva(
   {
     variants: {
       orientation: {
-        vertical: ["flex-col [&>*]:w-full [&>.sr-only]:w-auto"],
+        vertical: ["adm:flex-col adm:[&>*]:w-full adm:[&>.sr-only]:w-auto"],
         horizontal: [
-          "flex-row items-center",
-          "[&>[data-slot=field-label]]:flex-auto",
-          "has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+          "adm:flex-row adm:items-center",
+          "adm:[&>[data-slot=field-label]]:flex-auto",
+          "adm:has-[>[data-slot=field-content]]:items-start adm:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
         ],
         responsive: [
-          "flex-col [&>*]:w-full [&>.sr-only]:w-auto @md/field-group:flex-row @md/field-group:items-center @md/field-group:[&>*]:w-auto",
-          "@md/field-group:[&>[data-slot=field-label]]:flex-auto",
-          "@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+          "adm:flex-col adm:[&>*]:w-full adm:[&>.sr-only]:w-auto adm:@md/field-group:flex-row adm:@md/field-group:items-center adm:@md/field-group:[&>*]:w-auto",
+          "adm:@md/field-group:[&>[data-slot=field-label]]:flex-auto",
+          "adm:@md/field-group:has-[>[data-slot=field-content]]:items-start adm:@md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
         ],
       },
     },

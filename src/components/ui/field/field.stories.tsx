@@ -528,7 +528,7 @@ export const ResponsiveLayout: Story = {
                   id="message"
                   placeholder="Hello, world!"
                   required
-                  className="adm:min-h-[100px] adm:resize-none sm:adm:min-w-[300px]"
+                  className="adm:min-h-[100px] adm:resize-none adm:min-w-[300px]"
                 />
               </Field>
               <FieldSeparator />
