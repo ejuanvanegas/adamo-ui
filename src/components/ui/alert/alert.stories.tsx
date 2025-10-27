@@ -3,6 +3,7 @@ import { Alert, AlertDescription, AlertTitle } from "@src/components/ui/alert";
 import { Badge } from "@src/components/ui/badge";
 import { Button } from "@src/components/ui/button";
 import { Progress } from "@src/components/ui/progress";
+import { Checkbox } from "@src/components/ui/checkbox";
 import {
   CheckCircle2Icon,
   InfoIcon,
@@ -47,7 +48,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
   name: "Default",
   render: (args) => {
     return (
@@ -111,7 +111,6 @@ export const Warning: Story = {
 };
 
 export const WithoutIcon: Story = {
-  args: {},
   name: "Without icon",
   render: (args) => {
     return (
@@ -139,7 +138,6 @@ export const TitleOnly: Story = {
 };
 
 export const DescriptionOnly: Story = {
-  args: {},
   name: "Description only",
   render: (args) => {
     return (
@@ -154,7 +152,6 @@ export const DescriptionOnly: Story = {
 };
 
 export const AllVariants: Story = {
-  args: {},
   name: "All variants",
   render: function Render() {
     return (
@@ -230,7 +227,6 @@ export const SecurityAlert: Story = {
 };
 
 export const SystemStatusAlerts: Story = {
-  args: {},
   name: "System status alerts",
   render: function Render() {
     return (
@@ -258,7 +254,7 @@ export const SystemStatusAlerts: Story = {
           <AlertDescription>
             <p>We're experiencing connectivity issues with our primary data center.</p>
             <div className="adm:mt-3">
-              <div className="adm:flex adm:items-center adm:justify-between adm:mb-2">
+              <div className="adm:flex adm:gap-2 adm:items-center adm:justify-between adm:mb-2">
                 <span className="adm:text-sm">Recovery Progress</span>
                 <span className="adm:text-sm">75%</span>
               </div>
@@ -273,7 +269,6 @@ export const SystemStatusAlerts: Story = {
 };
 
 export const NotificationAlerts: Story = {
-  args: {},
   name: "Notification alerts",
   render: function Render() {
     return (
@@ -321,7 +316,6 @@ export const NotificationAlerts: Story = {
 };
 
 export const PerformanceAlerts: Story = {
-  args: {},
   name: "Performance alerts",
   render: function Render() {
     return (
@@ -332,19 +326,19 @@ export const PerformanceAlerts: Story = {
           <AlertDescription>
             <p>Your application performance has been automatically optimized.</p>
             <div className="adm:mt-3 adm:grid adm:grid-cols-2 adm:gap-2 adm:text-sm">
-              <div className="adm:flex adm:justify-between">
+              <div className="adm:flex adm:gap-4 adm:justify-between">
                 <span>Load time:</span>
                 <span className="adm:text-green-600">-45%</span>
               </div>
-              <div className="adm:flex adm:justify-between">
+              <div className="adm:flex adm:gap-4 adm:justify-between">
                 <span>Memory usage:</span>
                 <span className="adm:text-green-600">-23%</span>
               </div>
-              <div className="adm:flex adm:justify-between">
+              <div className="adm:flex adm:gap-4 adm:justify-between">
                 <span>CPU usage:</span>
                 <span className="adm:text-green-600">-31%</span>
               </div>
-              <div className="adm:flex adm:justify-between">
+              <div className="adm:flex adm:gap-4 adm:justify-between">
                 <span>Battery life:</span>
                 <span className="adm:text-green-600">+18%</span>
               </div>
@@ -358,7 +352,7 @@ export const PerformanceAlerts: Story = {
           <AlertDescription>
             <p>Some applications are using more resources than usual.</p>
             <div className="adm:mt-3 adm:space-y-2">
-              <div className="adm:flex adm:items-center adm:justify-between">
+              <div className="adm:flex adm:gap-4 adm:items-center adm:justify-between">
                 <div className="adm:flex adm:items-center adm:gap-2">
                   <CpuIcon className="adm:h-4 adm:w-4" />
                   <span className="adm:text-sm">CPU Usage</span>
@@ -368,7 +362,7 @@ export const PerformanceAlerts: Story = {
                   <span className="adm:text-sm adm:text-orange-600">87%</span>
                 </div>
               </div>
-              <div className="adm:flex adm:items-center adm:justify-between">
+              <div className="adm:flex adm:gap-4 adm:items-center adm:justify-between">
                 <div className="adm:flex adm:items-center adm:gap-2">
                   <MemoryStickIcon className="adm:h-4 adm:w-4" />
                   <span className="adm:text-sm">Memory Usage</span>
@@ -388,11 +382,11 @@ export const PerformanceAlerts: Story = {
           <AlertDescription>
             <p>System temperature is running high. Performance may be affected.</p>
             <div className="adm:mt-3 adm:text-sm">
-              <div className="adm:flex adm:justify-between adm:mb-1">
+              <div className="adm:flex adm:gap-4 adm:justify-between adm:mb-1">
                 <span>Current temperature:</span>
                 <span className="adm:font-medium">82°C</span>
               </div>
-              <div className="adm:flex adm:justify-between">
+              <div className="adm:flex adm:gap-4 adm:justify-between">
                 <span>Safe operating range:</span>
                 <span>0°C - 70°C</span>
               </div>
@@ -405,7 +399,6 @@ export const PerformanceAlerts: Story = {
 };
 
 export const DataAndStorageAlerts: Story = {
-  args: {},
   name: "Data and storage alerts",
   render: function Render() {
     return (
@@ -424,7 +417,7 @@ export const DataAndStorageAlerts: Story = {
           <AlertDescription>
             <p>Creating backup of your data to secure cloud storage.</p>
             <div className="adm:mt-3">
-              <div className="adm:flex adm:items-center adm:justify-between adm:mb-2">
+              <div className="adm:flex adm:gap-4 adm:items-center adm:justify-between adm:mb-2">
                 <span className="adm:text-sm">Progress</span>
                 <span className="adm:text-sm">1,247 / 1,850 files</span>
               </div>
@@ -489,7 +482,6 @@ export const DataAndStorageAlerts: Story = {
 };
 
 export const EcommerceAlerts: Story = {
-  args: {},
   name: "E-commerce alerts",
   render: function Render() {
     return (
@@ -508,15 +500,15 @@ export const EcommerceAlerts: Story = {
           <AlertDescription>
             <p>Your order #12345 has been shipped and is on its way to you.</p>
             <div className="adm:mt-3 adm:space-y-1 adm:text-sm">
-              <div className="adm:flex adm:justify-between">
+              <div className="adm:flex adm:gap-4 adm:justify-between">
                 <span>Tracking number:</span>
                 <span className="adm:font-mono">1Z999AA1234567890</span>
               </div>
-              <div className="adm:flex adm:justify-between">
+              <div className="adm:flex adm:gap-4 adm:justify-between">
                 <span>Estimated delivery:</span>
                 <span>Tomorrow, Oct 26</span>
               </div>
-              <div className="adm:flex adm:justify-between">
+              <div className="adm:flex adm:gap-4 adm:justify-between">
                 <span>Carrier:</span>
                 <span>UPS</span>
               </div>
@@ -561,7 +553,6 @@ export const EcommerceAlerts: Story = {
 };
 
 export const InteractiveAlerts: Story = {
-  args: {},
   name: "Interactive alerts",
   render: function Render() {
     return (
@@ -608,11 +599,11 @@ export const InteractiveAlerts: Story = {
                 </div>
                 <div className="adm:flex adm:items-center adm:justify-between">
                   <span className="adm:text-sm">Analytics cookies</span>
-                  <input type="checkbox" defaultChecked className="adm:rounded" />
+                  <Checkbox defaultChecked className="adm:rounded" />
                 </div>
                 <div className="adm:flex adm:items-center adm:justify-between">
                   <span className="adm:text-sm">Marketing cookies</span>
-                  <input type="checkbox" className="adm:rounded" />
+                  <Checkbox className="adm:rounded" />
                 </div>
               </div>
               <div className="adm:flex adm:gap-2">
