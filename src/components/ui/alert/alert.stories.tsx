@@ -4,7 +4,6 @@ import { Badge } from "@src/components/ui/badge";
 import { Button } from "@src/components/ui/button";
 import { Progress } from "@src/components/ui/progress";
 import {
-  AlertCircleIcon,
   CheckCircle2Icon,
   InfoIcon,
   AlertTriangleIcon,
@@ -36,6 +35,12 @@ const meta = {
   title: "Components/Alert",
   component: Alert,
   tags: ["autodocs"],
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["default", "destructive", "success", "warning"],
+    },
+  },
 } satisfies Meta<typeof Alert>;
 
 export default meta;
@@ -44,9 +49,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {},
   name: "Default",
-  render: function Render() {
+  render: (args) => {
     return (
-      <Alert>
+      <Alert variant={args.variant}>
         <InfoIcon />
         <AlertTitle>Heads up!</AlertTitle>
         <AlertDescription>
@@ -58,12 +63,12 @@ export const Default: Story = {
 };
 
 export const Destructive: Story = {
-  args: {},
+  args: { variant: "destructive" },
   name: "Destructive",
-  render: function Render() {
+  render: (args) => {
     return (
-      <Alert variant="destructive">
-        <AlertCircleIcon />
+      <Alert variant={args.variant}>
+        <XCircleIcon />
         <AlertTitle>Error</AlertTitle>
         <AlertDescription>
           Your session has expired. Please log in again.
@@ -73,12 +78,44 @@ export const Destructive: Story = {
   },
 };
 
+export const Success: Story = {
+  args: { variant: "success" },
+  name: "Success",
+  render: (args) => {
+    return (
+      <Alert variant={args.variant}>
+        <CheckCircle2Icon />
+        <AlertTitle>Success</AlertTitle>
+        <AlertDescription>
+          Your changes have been saved successfully.
+        </AlertDescription>
+      </Alert>
+    );
+  },
+};
+
+export const Warning: Story = {
+  args: { variant: "warning" },
+  name: "Warning",
+  render: (args) => {
+    return (
+      <Alert variant={args.variant}>
+        <AlertTriangleIcon />
+        <AlertTitle>Warning</AlertTitle>
+        <AlertDescription>
+          Your storage is running low. Consider upgrading your plan.
+        </AlertDescription>
+      </Alert>
+    );
+  },
+};
+
 export const WithoutIcon: Story = {
   args: {},
   name: "Without icon",
-  render: function Render() {
+  render: (args) => {
     return (
-      <Alert>
+      <Alert variant={args.variant}>
         <AlertTitle>Update available</AlertTitle>
         <AlertDescription>
           A new software update is available. You can now update your app to get the latest features.
@@ -89,11 +126,11 @@ export const WithoutIcon: Story = {
 };
 
 export const TitleOnly: Story = {
-  args: {},
+  args: { variant: "success" },
   name: "Title only",
-  render: function Render() {
+  render: (args) => {
     return (
-      <Alert>
+      <Alert variant={args.variant}>
         <CheckCircle2Icon />
         <AlertTitle>Your order has been processed!</AlertTitle>
       </Alert>
@@ -104,9 +141,9 @@ export const TitleOnly: Story = {
 export const DescriptionOnly: Story = {
   args: {},
   name: "Description only",
-  render: function Render() {
+  render: (args) => {
     return (
-      <Alert>
+      <Alert variant={args.variant}>
         <InfoIcon />
         <AlertDescription>
           This is an alert with only a description. Sometimes you don't need a title to communicate the message effectively.
@@ -116,104 +153,54 @@ export const DescriptionOnly: Story = {
   },
 };
 
-export const SuccessAlert: Story = {
+export const AllVariants: Story = {
   args: {},
-  name: "Success alert",
+  name: "All variants",
   render: function Render() {
     return (
-      <Alert>
-        <CheckCircle2Icon />
-        <AlertTitle>Success! Your changes have been saved</AlertTitle>
-        <AlertDescription>
-          Your profile information has been updated successfully. The changes will be visible across all your connected devices.
-        </AlertDescription>
-      </Alert>
-    );
-  },
-};
+      <div className="adm:space-y-4">
+        <Alert variant="default">
+          <InfoIcon />
+          <AlertTitle>Default variant</AlertTitle>
+          <AlertDescription>
+            This is the default alert variant for general information.
+          </AlertDescription>
+        </Alert>
 
-export const WarningAlert: Story = {
-  args: {},
-  name: "Warning alert",
-  render: function Render() {
-    return (
-      <Alert>
-        <AlertTriangleIcon />
-        <AlertTitle>Warning: Low disk space</AlertTitle>
-        <AlertDescription>
-          <p>Your system is running low on disk space. Consider cleaning up unnecessary files.</p>
-          <ul className="adm:list-disc adm:list-inside adm:mt-2 adm:space-y-1">
-            <li>Clear browser cache and temporary files</li>
-            <li>Remove unused applications</li>
-            <li>Move large files to external storage</li>
-          </ul>
-        </AlertDescription>
-      </Alert>
-    );
-  },
-};
+        <Alert variant="success">
+          <CheckCircle2Icon />
+          <AlertTitle>Success variant</AlertTitle>
+          <AlertDescription>
+            This variant is used for successful operations and positive feedback.
+          </AlertDescription>
+        </Alert>
 
-export const ErrorAlert: Story = {
-  args: {},
-  name: "Error alert",
-  render: function Render() {
-    return (
-      <Alert variant="destructive">
-        <XCircleIcon />
-        <AlertTitle>Unable to process your payment</AlertTitle>
-        <AlertDescription>
-          <p>There was a problem processing your payment. Please try again or contact support.</p>
-          <div className="adm:mt-3 adm:space-y-2">
-            <p className="adm:font-medium">Common solutions:</p>
-            <ul className="adm:list-disc adm:list-inside adm:space-y-1">
-              <li>Check your card details</li>
-              <li>Ensure sufficient funds</li>
-              <li>Verify billing address</li>
-              <li>Contact your bank</li>
-            </ul>
-          </div>
-        </AlertDescription>
-      </Alert>
-    );
-  },
-};
+        <Alert variant="warning">
+          <AlertTriangleIcon />
+          <AlertTitle>Warning variant</AlertTitle>
+          <AlertDescription>
+            This variant is used for warnings and cautionary messages.
+          </AlertDescription>
+        </Alert>
 
-export const InfoAlert: Story = {
-  args: {},
-  name: "Info alert",
-  render: function Render() {
-    return (
-      <Alert>
-        <InfoIcon />
-        <AlertTitle>New features available</AlertTitle>
-        <AlertDescription>
-          <p>We've added some exciting new features to improve your experience:</p>
-          <div className="adm:mt-3 adm:space-y-2">
-            <div className="adm:flex adm:items-center adm:gap-2">
-              <Badge variant="secondary">New</Badge>
-              <span className="adm:text-sm">Dark mode support</span>
-            </div>
-            <div className="adm:flex adm:items-center adm:gap-2">
-              <Badge variant="secondary">New</Badge>
-              <span className="adm:text-sm">Enhanced search functionality</span>
-            </div>
-            <div className="adm:flex adm:items-center adm:gap-2">
-              <Badge variant="secondary">Improved</Badge>
-              <span className="adm:text-sm">Faster loading times</span>
-            </div>
-          </div>
-        </AlertDescription>
-      </Alert>
+        <Alert variant="destructive">
+          <XCircleIcon />
+          <AlertTitle>Destructive variant</AlertTitle>
+          <AlertDescription>
+            This variant is used for errors and critical messages.
+          </AlertDescription>
+        </Alert>
+      </div>
     );
   },
 };
 
 export const SecurityAlert: Story = {
-  args: {},
+  args: { variant: "destructive" },
   name: "Security alert",
-  render: function Render() {
+  render: (args) => {
     return (
-      <Alert variant="destructive">
+      <Alert variant={args.variant}>
         <ShieldCheckIcon />
         <AlertTitle>Security Notice: Suspicious Login Attempt</AlertTitle>
         <AlertDescription>
@@ -248,7 +235,7 @@ export const SystemStatusAlerts: Story = {
   render: function Render() {
     return (
       <div className="adm:space-y-4">
-        <Alert>
+        <Alert variant="success">
           <ServerIcon />
           <AlertTitle>All systems operational</AlertTitle>
           <AlertDescription>
@@ -256,7 +243,7 @@ export const SystemStatusAlerts: Story = {
           </AlertDescription>
         </Alert>
 
-        <Alert>
+        <Alert variant="warning">
           <AlertTriangleIcon />
           <AlertTitle>Planned maintenance scheduled</AlertTitle>
           <AlertDescription>
@@ -321,7 +308,7 @@ export const NotificationAlerts: Story = {
           </AlertDescription>
         </Alert>
 
-        <Alert>
+        <Alert variant="success">
           <BellIcon />
           <AlertTitle>Daily backup completed</AlertTitle>
           <AlertDescription>
@@ -339,7 +326,7 @@ export const PerformanceAlerts: Story = {
   render: function Render() {
     return (
       <div className="adm:space-y-4">
-        <Alert>
+        <Alert variant="success">
           <ZapIcon />
           <AlertTitle>Performance optimized</AlertTitle>
           <AlertDescription>
@@ -365,7 +352,7 @@ export const PerformanceAlerts: Story = {
           </AlertDescription>
         </Alert>
 
-        <Alert>
+        <Alert variant="warning">
           <AlertTriangleIcon />
           <AlertTitle>High resource usage detected</AlertTitle>
           <AlertDescription>
@@ -403,7 +390,7 @@ export const PerformanceAlerts: Story = {
             <div className="adm:mt-3 adm:text-sm">
               <div className="adm:flex adm:justify-between adm:mb-1">
                 <span>Current temperature:</span>
-                <span className="adm:text-red-600 adm:font-medium">82°C</span>
+                <span className="adm:font-medium">82°C</span>
               </div>
               <div className="adm:flex adm:justify-between">
                 <span>Safe operating range:</span>
@@ -423,7 +410,7 @@ export const DataAndStorageAlerts: Story = {
   render: function Render() {
     return (
       <div className="adm:space-y-4">
-        <Alert>
+        <Alert variant="success">
           <DownloadIcon />
           <AlertTitle>Download completed</AlertTitle>
           <AlertDescription>
@@ -447,7 +434,7 @@ export const DataAndStorageAlerts: Story = {
           </AlertDescription>
         </Alert>
 
-        <Alert>
+        <Alert variant="warning">
           <AlertTriangleIcon />
           <AlertTitle>Storage almost full</AlertTitle>
           <AlertDescription>
@@ -507,7 +494,7 @@ export const EcommerceAlerts: Story = {
   render: function Render() {
     return (
       <div className="adm:space-y-4">
-        <Alert>
+        <Alert variant="success">
           <ShoppingCartIcon />
           <AlertTitle>Item added to cart</AlertTitle>
           <AlertDescription>
@@ -515,7 +502,7 @@ export const EcommerceAlerts: Story = {
           </AlertDescription>
         </Alert>
 
-        <Alert>
+        <Alert variant="success">
           <TruckIcon />
           <AlertTitle>Order shipped!</AlertTitle>
           <AlertDescription>
@@ -540,7 +527,7 @@ export const EcommerceAlerts: Story = {
           </AlertDescription>
         </Alert>
 
-        <Alert>
+        <Alert variant="warning">
           <PercentIcon />
           <AlertTitle>Limited time offer!</AlertTitle>
           <AlertDescription>
