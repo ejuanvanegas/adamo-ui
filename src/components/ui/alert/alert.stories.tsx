@@ -258,7 +258,7 @@ export const SystemStatusAlerts: Story = {
                 <span className="adm:text-sm">Recovery Progress</span>
                 <span className="adm:text-sm">75%</span>
               </div>
-              <Progress value={75} className="adm:h-2" />
+              <Progress value={75} variant="destructive" className="adm:h-2" />
             </div>
             <p className="adm:mt-2 adm:text-sm">Estimated resolution: 15 minutes</p>
           </AlertDescription>
@@ -358,7 +358,7 @@ export const PerformanceAlerts: Story = {
                   <span className="adm:text-sm">CPU Usage</span>
                 </div>
                 <div className="adm:flex adm:items-center adm:gap-2">
-                  <Progress value={87} className="adm:w-16 adm:h-2" />
+                  <Progress value={87} variant="warning" className="adm:w-16 adm:h-2" />
                   <span className="adm:text-sm adm:text-orange-600">87%</span>
                 </div>
               </div>
@@ -368,7 +368,7 @@ export const PerformanceAlerts: Story = {
                   <span className="adm:text-sm">Memory Usage</span>
                 </div>
                 <div className="adm:flex adm:items-center adm:gap-2">
-                  <Progress value={94} className="adm:w-16 adm:h-2" />
+                  <Progress value={94} variant="warning" className="adm:w-16 adm:h-2" />
                   <span className="adm:text-sm adm:text-red-600">94%</span>
                 </div>
               </div>
@@ -437,7 +437,7 @@ export const DataAndStorageAlerts: Story = {
                 <span>Used space:</span>
                 <span>89.2 GB of 100 GB</span>
               </div>
-              <Progress value={89} className="adm:h-2" />
+              <Progress value={89} variant="warning" className="adm:h-2" />
               <div className="adm:grid adm:grid-cols-2 adm:gap-4 adm:mt-3">
                 <div>
                   <p className="adm:font-medium">Largest folders:</p>
