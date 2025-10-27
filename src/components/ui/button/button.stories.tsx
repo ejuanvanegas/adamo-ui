@@ -17,25 +17,30 @@ import {
   StarIcon,
   PlayIcon,
   PauseIcon,
-  ChevronDownIcon,
   ExternalLinkIcon,
   Loader2Icon,
 } from "lucide-react";
 
-const meta: Meta<typeof Button> = {
+const meta = {
   title: "Components/Button",
   component: Button,
   tags: ["autodocs"],
-  argTypes: {},
-};
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Displays a button or a component that looks like a button.",
+      },
+    },
+  },
+} satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: "Default",
-  render: function Render() {
-    return <Button>Button</Button>;
+  render: function Render(args) {
+    return <Button {...args}>Button</Button>;
   },
   parameters: {
     docs: {
@@ -46,15 +51,61 @@ export const Default: Story = {
   },
 };
 
-export const Secondary: Story = {
-  name: "Secondary",
-  render: function Render() {
-    return <Button variant="secondary">Secondary</Button>;
+export const Success: Story = {
+  name: "Success",
+  args: { variant: "success" },
+  render: function Render(args) {
+    return <Button {...args}>Success</Button>;
   },
   parameters: {
     docs: {
       description: {
-        story: "A button with secondary styling for less emphasis.",
+        story: "A button with success styling for positive actions.",
+      },
+    },
+  },
+};
+
+export const SuccessMedium: Story = {
+  name: "Success medium",
+  args: { variant: "success-medium" },
+  render: function Render(args) {
+    return <Button {...args}>Success Medium</Button>;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A lighter version of the success button with subtle success styling.",
+      },
+    },
+  },
+};
+
+export const Warning: Story = {
+  name: "Warning",
+  args: { variant: "warning" },
+  render: function Render(args) {
+    return <Button {...args}>Warning</Button>;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A button with warning styling for cautionary actions.",
+      },
+    },
+  },
+};
+
+export const WarningMedium: Story = {
+  name: "Warning medium",
+  args: { variant: "warning-medium" },
+  render: function Render(args) {
+    return <Button {...args}>Warning Medium</Button>;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A lighter version of the warning button with subtle warning styling.",
       },
     },
   },
@@ -62,8 +113,9 @@ export const Secondary: Story = {
 
 export const Destructive: Story = {
   name: "Destructive",
-  render: function Render() {
-    return <Button variant="destructive">Destructive</Button>;
+  args: { variant: "destructive" },
+  render: function Render(args) {
+    return <Button {...args}>Destructive</Button>;
   },
   parameters: {
     docs: {
@@ -74,10 +126,41 @@ export const Destructive: Story = {
   },
 };
 
+export const DestructiveMedium: Story = {
+  name: "Destructive medium",
+  args: { variant: "destructive-medium" },
+  render: function Render(args) {
+    return <Button {...args}>Destructive Medium</Button>;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A lighter version of the destructive button with subtle error styling.",
+      },
+    },
+  },
+};
+
+export const Secondary: Story = {
+  name: "Secondary",
+  args: { variant: "secondary" },
+  render: function Render(args) {
+    return <Button {...args}>Secondary</Button>;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A button with secondary styling for less emphasis.",
+      },
+    },
+  },
+};
+
 export const Outline: Story = {
   name: "Outline",
-  render: function Render() {
-    return <Button variant="outline">Outline</Button>;
+  args: { variant: "outline" },
+  render: function Render(args) {
+    return <Button {...args}>Outline</Button>;
   },
   parameters: {
     docs: {
@@ -90,8 +173,9 @@ export const Outline: Story = {
 
 export const Ghost: Story = {
   name: "Ghost",
-  render: function Render() {
-    return <Button variant="ghost">Ghost</Button>;
+  args: { variant: "ghost" },
+  render: function Render(args) {
+    return <Button {...args}>Ghost</Button>;
   },
   parameters: {
     docs: {
@@ -104,13 +188,42 @@ export const Ghost: Story = {
 
 export const Link: Story = {
   name: "Link",
-  render: function Render() {
-    return <Button variant="link">Link</Button>;
+  args: { variant: "link" },
+  render: function Render(args) {
+    return <Button {...args}>Link</Button>;
   },
   parameters: {
     docs: {
       description: {
-        story: "A button styled to look like a text link.",
+        story: "A button that looks like a link with underline styling.",
+      },
+    },
+  },
+};
+
+export const VariantsOverview: Story = {
+  name: "Variants overview",
+  render: function Render(args) {
+    return (
+      <div className="adm:flex adm:gap-2 adm:flex-wrap">
+        <Button {...args}>Default</Button>
+        <Button {...args} variant="success">Success</Button>
+        <Button {...args} variant="success-medium">Success Medium</Button>
+        <Button {...args} variant="warning">Warning</Button>
+        <Button {...args} variant="warning-medium">Warning Medium</Button>
+        <Button {...args} variant="destructive">Destructive</Button>
+        <Button {...args} variant="destructive-medium">Destructive Medium</Button>
+        <Button {...args} variant="secondary">Secondary</Button>
+        <Button {...args} variant="outline">Outline</Button>
+        <Button {...args} variant="ghost">Ghost</Button>
+        <Button {...args} variant="link">Link</Button>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "All button variants showcasing the complete range of styling options.",
       },
     },
   },
@@ -118,22 +231,30 @@ export const Link: Story = {
 
 export const WithIcon: Story = {
   name: "With icon",
-  render: function Render() {
+  render: function Render(args) {
     return (
       <div className="adm:flex adm:gap-2 adm:flex-wrap">
-        <Button variant="default">
+        <Button {...args} variant="default">
           <PlusIcon />
           Add Item
         </Button>
-        <Button variant="outline">
+        <Button {...args} variant="success">
+          <SaveIcon />
+          Save
+        </Button>
+        <Button {...args} variant="warning">
+          <ExternalLinkIcon />
+          Warning
+        </Button>
+        <Button {...args} variant="outline">
           <MailIcon />
           Send Email
         </Button>
-        <Button variant="secondary">
+        <Button {...args} variant="secondary">
           <DownloadIcon />
           Download
         </Button>
-        <Button variant="destructive">
+        <Button {...args} variant="destructive">
           <TrashIcon />
           Delete
         </Button>
@@ -151,16 +272,16 @@ export const WithIcon: Story = {
 
 export const IconOnly: Story = {
   name: "Icon only",
-  render: function Render() {
+  render: function Render(args) {
     return (
       <div className="adm:flex adm:gap-2 adm:items-center">
-        <Button variant="outline" size="icon-sm" aria-label="Edit">
+        <Button {...args} variant="outline" size="icon-sm" aria-label="Edit">
           <EditIcon />
         </Button>
-        <Button variant="outline" size="icon" aria-label="Settings">
+        <Button {...args} variant="outline" size="icon" aria-label="Settings">
           <SettingsIcon />
         </Button>
-        <Button variant="outline" size="icon-lg" aria-label="Search">
+        <Button {...args} variant="outline" size="icon-lg" aria-label="Search">
           <SearchIcon />
         </Button>
       </div>
@@ -416,113 +537,6 @@ export const ActionButtons: Story = {
     docs: {
       description: {
         story: "Common action buttons organized by importance and danger level.",
-      },
-    },
-  },
-};
-
-export const ButtonGroup: Story = {
-  name: "Button group",
-  render: function Render() {
-    const [selected, setSelected] = useState("center");
-
-    return (
-      <div className="adm:space-y-4">
-        <div>
-          <h4 className="adm:text-sm adm:font-medium adm:mb-2">Joined Buttons</h4>
-          <div className="adm:flex">
-            <Button
-              variant="outline"
-              className="adm:rounded-r-none adm:border-r-0"
-            >
-              <EditIcon />
-              Edit
-            </Button>
-            <Button
-              variant="outline"
-              className="adm:rounded-none adm:border-r-0"
-            >
-              <CopyIcon />
-              Copy
-            </Button>
-            <Button
-              variant="outline"
-              className="adm:rounded-l-none"
-            >
-              <ShareIcon />
-              Share
-            </Button>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="adm:text-sm adm:font-medium adm:mb-2">Toggle Group</h4>
-          <div className="adm:flex">
-            {["left", "center", "right"].map((alignment) => (
-              <Button
-                key={alignment}
-                variant={selected === alignment ? "default" : "outline"}
-                className={`
-                  ${alignment === "left" ? "adm:rounded-r-none adm:border-r-0" : ""}
-                  ${alignment === "center" ? "adm:rounded-none adm:border-r-0" : ""}
-                  ${alignment === "right" ? "adm:rounded-l-none" : ""}
-                `}
-                onClick={() => setSelected(alignment)}
-              >
-                {alignment.charAt(0).toUpperCase() + alignment.slice(1)}
-              </Button>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Button groups showing joined buttons and toggle functionality.",
-      },
-    },
-  },
-};
-
-export const DropdownButton: Story = {
-  name: "Dropdown button",
-  render: function Render() {
-    return (
-      <div className="adm:flex adm:gap-2 adm:flex-wrap">
-        <Button variant="outline">
-          More Actions
-          <ChevronDownIcon />
-        </Button>
-        <Button>
-          Create
-          <ChevronDownIcon />
-        </Button>
-        <div className="adm:flex">
-          <Button className="adm:rounded-r-none adm:border-r-0">
-            Deploy
-          </Button>
-          <Button
-            className="adm:rounded-r-none adm:border-r-0"
-          >
-            Deploy
-          </Button>
-          <Button
-            variant="default"
-            size="icon"
-            className="adm:rounded-l-none adm:border-l-0"
-          >
-            <ChevronDownIcon />
-          </Button>
-        </div>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Buttons designed to work with dropdown menus, including split button patterns.",
       },
     },
   },
