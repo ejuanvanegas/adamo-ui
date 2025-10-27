@@ -58,13 +58,13 @@ function SheetContent({
         className={cn(
           "adm:bg-background adm:data-[state=open]:animate-in adm:data-[state=closed]:animate-out adm:fixed adm:z-50 adm:flex adm:flex-col adm:gap-4 adm:shadow-lg adm:transition adm:ease-in-out adm:data-[state=closed]:duration-300 adm:data-[state=open]:duration-500",
           side === "right"
-          && "adm:data-[state=closed]:slide-out-to-right adm:data-[state=open]:slide-in-from-right adm:inset-y-0 adm:right-0 adm:h-full adm:w-3/4 adm:border-l adm:sm:max-w-sm",
+          && "adm:rounded-tl-lg adm:rounded-bl-lg adm:data-[state=closed]:slide-out-to-right adm:data-[state=open]:slide-in-from-right adm:inset-y-0 adm:right-0 adm:h-full adm:w-3/4 adm:border-l adm:sm:max-w-sm",
           side === "left"
-          && "adm:data-[state=closed]:slide-out-to-left adm:data-[state=open]:slide-in-from-left adm:inset-y-0 adm:left-0 adm:h-full adm:w-3/4 adm:border-r adm:sm:max-w-sm",
+          && "adm:rounded-tr-lg adm:rounded-br-lg adm:data-[state=closed]:slide-out-to-left adm:data-[state=open]:slide-in-from-left adm:inset-y-0 adm:left-0 adm:h-full adm:w-3/4 adm:border-r adm:sm:max-w-sm",
           side === "top"
-          && "adm:data-[state=closed]:slide-out-to-top adm:data-[state=open]:slide-in-from-top adm:inset-x-0 adm:top-0 adm:h-auto adm:border-b",
+          && "adm:rounded-br-lg adm:rounded-bl-lg adm:data-[state=closed]:slide-out-to-top adm:data-[state=open]:slide-in-from-top adm:inset-x-0 adm:top-0 adm:h-auto adm:border-b",
           side === "bottom"
-          && "adm:data-[state=closed]:slide-out-to-bottom adm:data-[state=open]:slide-in-from-bottom adm:inset-x-0 adm:bottom-0 adm:h-auto adm:border-t",
+          && "adm:rounded-tr-lg adm:rounded-tl-lg adm:data-[state=closed]:slide-out-to-bottom adm:data-[state=open]:slide-in-from-bottom adm:inset-x-0 adm:bottom-0 adm:h-auto adm:border-t",
           className,
         )}
         {...props}
