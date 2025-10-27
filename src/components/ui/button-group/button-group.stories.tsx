@@ -534,58 +534,6 @@ export const WithText: Story = {
   },
 };
 
-export const InteractiveToggle: Story = {
-  name: "Interactive toggle",
-  render: function Render() {
-    const [view, setView] = useState("grid");
-    const [selected, setSelected] = useState("option2");
-
-    return (
-      <div className="adm:space-y-4">
-        <ButtonGroup>
-          <Button
-            variant={view === "list" ? "default" : "outline"}
-            onClick={() => setView("list")}
-          >
-            List View
-          </Button>
-          <Button
-            variant={view === "grid" ? "default" : "outline"}
-            onClick={() => setView("grid")}
-          >
-            Grid View
-          </Button>
-          <Button
-            variant={view === "card" ? "default" : "outline"}
-            onClick={() => setView("card")}
-          >
-            Card View
-          </Button>
-        </ButtonGroup>
-
-        <ButtonGroup>
-          {["option1", "option2", "option3"].map((option) => (
-            <Button
-              key={option}
-              variant={selected === option ? "default" : "outline"}
-              onClick={() => setSelected(option)}
-            >
-              {option.charAt(0).toUpperCase() + option.slice(1)}
-            </Button>
-          ))}
-        </ButtonGroup>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Interactive toggle button groups with state management for view switching and option selection.",
-      },
-    },
-  },
-};
-
 export const AllOrientations: Story = {
   name: "All orientations",
   render: function Render() {
