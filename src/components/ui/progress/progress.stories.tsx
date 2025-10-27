@@ -26,12 +26,51 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: function Render() {
-    return <Progress value={33} className={cn("adm:w-[60%]")} />;
+    return <Progress value={33} variant="default" className={cn("adm:w-[60%]")} />;
   },
   parameters: {
     docs: {
       description: {
         story: "A basic progress bar showing 33% completion.",
+      },
+    },
+  },
+};
+
+export const Destructive: Story = {
+  render: function Render() {
+    return <Progress value={90} variant="destructive" className={cn("adm:w-[60%]")} />;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A basic progress bar showing 90% completion.",
+      },
+    },
+  },
+};
+
+export const Warning: Story = {
+  render: function Render() {
+    return <Progress value={40} variant="warning" className={cn("adm:w-[60%]")} />;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A basic progress bar showing 40% completion.",
+      },
+    },
+  },
+};
+
+export const Success: Story = {
+  render: function Render() {
+    return <Progress value={70} variant="success" className={cn("adm:w-[60%]")} />;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A basic progress bar showing 70% completion.",
       },
     },
   },
