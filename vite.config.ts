@@ -54,6 +54,7 @@ export default defineConfig({
         spinner: path.resolve(__dirname, "src/components/ui/spinner/index.ts"),
         switch: path.resolve(__dirname, "src/components/ui/switch/index.ts"),
         tabs: path.resolve(__dirname, "src/components/ui/tabs/index.ts"),
+        "tabs-underline": path.resolve(__dirname, "src/components/ui/tabs-underline/index.ts"),
         textarea: path.resolve(__dirname, "src/components/ui/textarea/index.ts"),
         toggle: path.resolve(__dirname, "src/components/ui/toggle/index.ts"),
         tooltip: path.resolve(__dirname, "src/components/ui/tooltip/index.ts"),

@@ -143,6 +143,10 @@
       "types": "./dist/components/ui/tabs/tabs.d.ts",
       "import": "./dist/tabs.js"
     },
+    "./tabs-underline": {
+      "types": "./dist/components/ui/tabs-underline/tabs-underline.d.ts",
+      "import": "./dist/tabs-underline.js"
+    },
     "./textarea": {
       "types": "./dist/components/ui/textarea/textarea.d.ts",
       "import": "./dist/textarea.js"
