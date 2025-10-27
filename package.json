@@ -158,6 +158,10 @@
     "./tooltip": {
       "types": "./dist/components/ui/tooltip/tooltip.d.ts",
       "import": "./dist/tooltip.js"
+    },
+    "./typography": {
+      "types": "./dist/components/ui/typography/typography.d.ts",
+      "import": "./dist/typography.js"
     }
   },
   "files": [

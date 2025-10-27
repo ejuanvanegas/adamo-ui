@@ -58,6 +58,7 @@ export default defineConfig({
         textarea: path.resolve(__dirname, "src/components/ui/textarea/index.ts"),
         toggle: path.resolve(__dirname, "src/components/ui/toggle/index.ts"),
         tooltip: path.resolve(__dirname, "src/components/ui/tooltip/index.ts"),
+        typography: path.resolve(__dirname, "src/components/ui/typography/index.ts"),
         styles: path.resolve(__dirname, "src/index.css"),
         "custom-layered-styles": path.resolve(__dirname, "src/custom-layered-index.css"),
         colors: path.resolve(__dirname, "src/css/colors.css"),
