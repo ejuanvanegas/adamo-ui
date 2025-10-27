@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@src/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@src/components/ui/tabs-underline";
 import { Button } from "@src/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@src/components/ui/card";
 import { Input } from "@src/components/ui/input";
@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 
 const meta = {
-  title: "Components/Tabs",
+  title: "Components/Tabs underline",
   component: Tabs,
   tags: ["autodocs"],
 } satisfies Meta<typeof Tabs>;

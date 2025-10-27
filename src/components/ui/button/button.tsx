@@ -7,7 +7,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@src/lib/utils";
 
 const buttonVariants = cva(
-  "adm:inline-flex adm:items-center adm:justify-center adm:gap-2 adm:whitespace-nowrap adm:rounded-md adm:text-sm adm:font-medium adm:transition-all adm:disabled:pointer-events-none adm:disabled:opacity-50 adm:[&_svg]:pointer-events-none adm:[&_svg:not([class*=size-])]:size-4 adm:shrink-0 adm:[&_svg]:shrink-0 adm:outline-none adm:focus-visible:border-ring adm:focus-visible:ring-ring/50 adm:focus-visible:ring-[3px] adm:aria-invalid:ring-destructive/20 adm:dark:aria-invalid:ring-destructive/40 adm:aria-invalid:border-destructive",
+  "adm:inline-flex adm:items-center adm:justify-center adm:gap-2 adm:whitespace-nowrap adm:rounded-md adm:text-sm adm:font-semibold adm:transition-all adm:disabled:pointer-events-none adm:disabled:opacity-50 adm:[&_svg]:pointer-events-none adm:[&_svg:not([class*=size-])]:size-4 adm:shrink-0 adm:[&_svg]:shrink-0 adm:outline-none adm:focus-visible:border-ring adm:focus-visible:ring-ring/50 adm:focus-visible:ring-[3px] adm:aria-invalid:ring-destructive/20 adm:dark:aria-invalid:ring-destructive/40 adm:aria-invalid:border-destructive",
   {
     variants: {
       variant: {

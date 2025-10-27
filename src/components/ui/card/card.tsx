@@ -1,9 +1,11 @@
+/* eslint-disable react-refresh/only-export-components */
+
 import * as React from "react";
 
 import { cn } from "@src/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-const CardVariants = cva(
+const cardVariants = cva(
   "adm:bg-card adm:text-card-foreground adm:flex adm:flex-col adm:gap-6 adm:rounded-xl adm:border adm:py-6 adm:shadow-sm",
   {
     variants: {
@@ -29,11 +31,11 @@ function Card({
   className,
   variant,
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof CardVariants>) {
+}: React.ComponentProps<"div"> & VariantProps<typeof cardVariants>) {
   return (
     <div
       data-slot="card"
-      className={cn(CardVariants({ variant }), className)}
+      className={cn(cardVariants({ variant }), className)}
       {...props}
     />
   );
@@ -113,4 +115,5 @@ export {
   CardAction,
   CardDescription,
   CardContent,
+  cardVariants,
 };
