@@ -4,5 +4,11 @@
     "**/src/index.css": "tailwindcss",
     "**/src/custom-layered-index.css": "tailwindcss",
   },
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "cSpell.words": [
+    "autodocs",
+    "topbar",
+    "uidotdev",
+    "usehooks"
+  ]
 }

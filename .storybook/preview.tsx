@@ -1,28 +1,31 @@
 import type { Preview } from "@storybook/react-vite";
+import { INITIAL_VIEWPORTS } from "storybook/viewport";
 
 import "../src/index.css";
 
-export const globalTypes = {
-  theme: {
-    name: "Theme",
-    description: "Global theme for components",
-    defaultValue: "default",
-    toolbar: {
-      icon: "circlehollow",
-      items: [
-        { value: "default", title: "Default" },
-        { value: "sign", title: "Sign" },
-        { value: "id", title: "Id" },
-        { value: "pay", title: "Pay" },
-        { value: "risk", title: "Risk" },
-      ],
-      showName: true,
+const preview: Preview = {
+  globalTypes: {
+    theme: {
+      name: "Theme",
+      description: "Global theme for components",
+      defaultValue: "default",
+      toolbar: {
+        icon: "circlehollow",
+        items: [
+          { value: "default", title: "Default" },
+          { value: "sign", title: "Sign" },
+          { value: "id", title: "Id" },
+          { value: "pay", title: "Pay" },
+          { value: "risk", title: "Risk" },
+        ],
+        showName: true,
+      },
     },
   },
-};
-
-const preview: Preview = {
   parameters: {
+    viewport: {
+      options: INITIAL_VIEWPORTS,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

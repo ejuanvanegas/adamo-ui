@@ -23,6 +23,7 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       entry: {
+        sidebar: path.resolve(__dirname, "src/components/layout/sidebar/index.ts"),
         accordion: path.resolve(__dirname, "src/components/ui/accordion/index.ts"),
         alert: path.resolve(__dirname, "src/components/ui/alert/index.ts"),
         avatar: path.resolve(__dirname, "src/components/ui/avatar/index.ts"),

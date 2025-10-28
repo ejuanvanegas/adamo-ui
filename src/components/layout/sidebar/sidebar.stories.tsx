@@ -1,10 +1,8 @@
-import { Portal } from "@radix-ui/react-portal";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SidebarInset,
   SidebarMenu,
   SidebarMenuItem,
 } from "@src/components/layout/sidebar";
@@ -15,43 +13,50 @@ import {
   HomeIcon,
   LogOutIcon,
 } from "lucide-react";
+import type { Meta, StoryObj } from "@storybook/react";
 
-export default function App() {
-  return (
-    <Sidebar>
-      <SidebarContent>
-        <SidebarHeader className="adm:items-center">
-          <Logo />
-        </SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <HomeIcon /> Home
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <FileIcon /> Documents
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <CircleUserRoundIcon /> Contacts
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <BellIcon /> Notifications
-          </SidebarMenuItem>
-        </SidebarMenu>
-        <SidebarFooter>
-          <SidebarMenuItem>
-            <LogOutIcon /> Logout
-          </SidebarMenuItem>
-        </SidebarFooter>
-      </SidebarContent>
-      <SidebarInset>
-        <Portal container={document.querySelector("[data-slot='sidebar-topbar']")}>
-          <div>Rendering in portal</div>
-        </Portal>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem excepturi hic voluptates provident dolores architecto veritatis quaerat illum dignissimos placeat quibusdam culpa aut, delectus nostrum ipsa unde ut quis aliquam!</p>
-      </SidebarInset>
-    </Sidebar>
-  );
-}
+const meta: Meta<typeof Sidebar> = {
+  title: "Components/Sidebar",
+  component: Sidebar,
+  tags: ["autodocs"],
+  argTypes: {},
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: function Render() {
+    return (
+      <Sidebar>
+        <SidebarContent>
+          <SidebarHeader className="adm:items-center">
+            <Logo />
+          </SidebarHeader>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <HomeIcon /> Home
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <FileIcon /> Documents
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <CircleUserRoundIcon /> Contacts
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <BellIcon /> Notifications
+            </SidebarMenuItem>
+          </SidebarMenu>
+          <SidebarFooter>
+            <SidebarMenuItem>
+              <LogOutIcon /> Logout
+            </SidebarMenuItem>
+          </SidebarFooter>
+        </SidebarContent>
+      </Sidebar>
+    );
+  },
+};
 
 function Logo() {
   return (
