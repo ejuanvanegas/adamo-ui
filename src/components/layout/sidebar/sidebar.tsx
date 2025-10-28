@@ -1,6 +1,13 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import { createContext, useContext, useRef, type ComponentProps, type PropsWithChildren, type RefObject } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  type ComponentProps,
+  type PropsWithChildren,
+  type Dispatch,
+} from "react";
 import { Portal } from "@radix-ui/react-portal";
 import { cn } from "@src/lib/utils";
 import { MenuIcon } from "lucide-react";
@@ -17,30 +24,36 @@ import { Slot } from "@radix-ui/react-slot";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 type SidebarContextType = {
-  sidebarContentRef: RefObject<HTMLDivElement | null>
+  isXl: boolean
+  sidebarHeight: string
+  setSidebarHeight: Dispatch<React.SetStateAction<string>>
 };
 
 const SidebarContext = createContext({} as SidebarContextType);
 
 function Sidebar({ children }: PropsWithChildren) {
-  const sidebarContentRef = useRef<HTMLDivElement>(null);
+  const [sidebarHeight, setSidebarHeight] = useState<string>("auto");
+
+  const isXl = useMediaQuery("(min-width: 1280px)");
 
   return (
-    <SidebarContext.Provider value={{ sidebarContentRef }}>
-      <nav data-slot="sidebar">{children}</nav>;
+    <SidebarContext.Provider value={{ isXl, sidebarHeight, setSidebarHeight }}>
+      <nav data-slot="sidebar">{children}</nav>
     </SidebarContext.Provider>
   );
 }
 
 function SidebarContent({ className, children, ...props }: PropsWithChildren<ComponentProps<"div">>) {
-  const { sidebarContentRef } = useSidebarContext();
-
-  const isXl = useMediaQuery("(min-width: 1280px)");
+  const { isXl, setSidebarHeight } = useSidebarContext();
 
   return (
     <Portal>
       <div
-        ref={sidebarContentRef}
+        ref={(node) => {
+          if (node) {
+            setSidebarHeight(!isXl ? `${node.clientHeight}px` : "auto");
+          }
+        }}
         data-slot="sidebar-content"
         className={cn(className, [
           "adm:fixed adm:bg-sidebar-primary adm:text-sidebar-primary-foreground adm:xl:flex adm:xl:flex-col",
@@ -50,40 +63,38 @@ function SidebarContent({ className, children, ...props }: PropsWithChildren<Com
         {...props}
       >
         {isXl && children}
-        {!isXl && (
-          <Sheet>
-            <div className="adm:flex adm:items-center adm:gap-4 adm:p-4">
-              <div data-slot="sidebar-topbar"></div>
-              <SheetTrigger asChild>
-                <MenuIcon className="adm:ml-auto adm:cursor-pointer" />
-              </SheetTrigger>
-            </div>
-            <SheetContent showCloseButton={false} className="adm:bg-sidebar-primary adm:text-sidebar-primary-foreground adm:border-sidebar-primary adm:rounded-none">
-              <VisuallyHidden>
-                <SheetHeader>
-                  <SheetTitle>Sidebar</SheetTitle>
-                  <SheetDescription>
-                    Sidebar
-                  </SheetDescription>
-                </SheetHeader>
-              </VisuallyHidden>
-              {children}
-            </SheetContent>
-          </Sheet>
-        )}
+        <Sheet>
+          <div className="adm:flex adm:items-center adm:gap-4 adm:p-4 adm:xl:hidden">
+            <div data-slot="sidebar-topbar" className="adm:w-full"></div>
+            <SheetTrigger asChild>
+              <MenuIcon className="adm:ml-auto adm:cursor-pointer" />
+            </SheetTrigger>
+          </div>
+          <SheetContent showCloseButton={false} className="adm:bg-sidebar-primary adm:text-sidebar-primary-foreground adm:border-sidebar-primary adm:rounded-none">
+            <VisuallyHidden>
+              <SheetHeader>
+                <SheetTitle>Sidebar</SheetTitle>
+                <SheetDescription>
+                  Sidebar
+                </SheetDescription>
+              </SheetHeader>
+            </VisuallyHidden>
+            {children}
+          </SheetContent>
+        </Sheet>
       </div>
     </Portal>
   );
 }
 
 function SidebarInset({ className, children, ...props }: PropsWithChildren<ComponentProps<"div">>) {
-  const { sidebarContentRef } = useSidebarContext();
+  const { sidebarHeight } = useSidebarContext();
 
   return (
     <main
       data-slot="sidebar-inset"
       className={cn(className, "adm:xl:ml-[256px] adm:xl:mt-auto")}
-      style={{ marginTop: sidebarContentRef.current?.clientHeight }}
+      style={{ marginTop: sidebarHeight !== "auto" ? sidebarHeight : "auto" }}
       {...props}
     >
       {children}

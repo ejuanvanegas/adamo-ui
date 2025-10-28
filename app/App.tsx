@@ -15,8 +15,11 @@ import {
   HomeIcon,
   LogOutIcon,
 } from "lucide-react";
+import { usePortalContainer } from "@src/hooks/use-portal-container";
 
 export default function App() {
+  const topbarContainer = usePortalContainer("[data-slot='sidebar-topbar']");
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -44,9 +47,11 @@ export default function App() {
         </SidebarFooter>
       </SidebarContent>
       <SidebarInset>
-        <Portal container={document.querySelector("[data-slot='sidebar-topbar']")}>
-          <div>Rendering in portal</div>
-        </Portal>
+        {topbarContainer && (
+          <Portal container={topbarContainer}>
+            <div>Rendering in portal</div>
+          </Portal>
+        )}
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem excepturi hic voluptates provident dolores architecto veritatis quaerat illum dignissimos placeat quibusdam culpa aut, delectus nostrum ipsa unde ut quis aliquam!</p>
       </SidebarInset>
     </Sidebar>

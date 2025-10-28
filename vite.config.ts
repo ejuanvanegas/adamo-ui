@@ -23,6 +23,7 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       entry: {
+        "use-portal-container": path.resolve(__dirname, "src/hooks/use-portal-container.ts"),
         sidebar: path.resolve(__dirname, "src/components/layout/sidebar/index.ts"),
         accordion: path.resolve(__dirname, "src/components/ui/accordion/index.ts"),
         alert: path.resolve(__dirname, "src/components/ui/alert/index.ts"),

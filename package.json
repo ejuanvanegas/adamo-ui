@@ -1,6 +1,6 @@
 {
   "name": "@eatteer/ui",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
@@ -19,6 +19,10 @@
     "./tailwind-colors.css": "./dist/tailwind-colors.css",
     "./tailwind-spacing.css": "./dist/tailwind-spacing.css",
     "./tailwind-radius.css": "./dist/tailwind-radius.css",
+    "./use-portal-container": {
+      "types": "./dist/hooks/use-portal-container/use-portal-container.d.ts",
+      "import": "./dist/use-portal-container.js"
+    },
     "./sidebar": {
       "types": "./dist/components/layout/sidebar/sidebar.d.ts",
       "import": "./dist/sidebar.js"
