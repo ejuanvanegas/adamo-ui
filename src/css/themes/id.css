@@ -45,11 +45,6 @@
   --primary-700: var(--id-700);
   --primary-800: var(--id-800);
   --primary-900: var(--id-900);
-
-  --warning: var(--warning-500);
-  --warning-foreground: oklch(1 0 0);
-  --success: var(--success-500);
-  --success-foreground: oklch(1 0 0);
 }
 
 [data-theme="id"].dark {
@@ -86,10 +81,4 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: var(--id-500);
-
-  /* Custom vars */
-  --warning: var(--warning-500);
-  --warning-foreground: oklch(1 0 0);
-  --success: var(--success-500);
-  --success-foreground: oklch(1 0 0);
 }

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { Switch } from "./switch";
+import { Switch } from "@src/components/ui/switch";
 import { Label } from "@src/components/ui/label";
 import { Button } from "@src/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@src/components/ui/card";

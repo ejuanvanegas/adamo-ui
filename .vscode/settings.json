@@ -1,9 +1,39 @@
 {
+  // Tailwind
   "tailwindCSS.experimental.configFile": "src/index.css",
   "files.associations": {
     "**/src/index.css": "tailwindcss",
     "**/src/custom-layered-index.css": "tailwindcss",
   },
+  // ESLint + Formatting
+  "eslint.format.enable": true,
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "unifiedjs.vscode-mdx"
+  },
+  // Other
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "cSpell.words": [
     "autodocs",

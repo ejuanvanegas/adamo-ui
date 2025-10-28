@@ -1,6 +1,6 @@
 {
   "name": "@eatteer/ui",
-  "version": "0.0.35",
+  "version": "0.0.36",
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
@@ -16,6 +16,7 @@
     "./themes.css": "./dist/themes.css",
     "./tailwind-theme.css": "./dist/tailwind-theme.css",
     "./tailwind-fonts.css": "./dist/tailwind-fonts.css",
+    "./tailwind-animations.css": "./dist/tailwind-colors.css",
     "./tailwind-colors.css": "./dist/tailwind-colors.css",
     "./tailwind-spacing.css": "./dist/tailwind-spacing.css",
     "./tailwind-radius.css": "./dist/tailwind-radius.css",
@@ -26,6 +27,10 @@
     "./sidebar": {
       "types": "./dist/components/layout/sidebar/sidebar.d.ts",
       "import": "./dist/sidebar.js"
+    },
+    "./toaster": {
+      "types": "./dist/components/layout/toaster/toaster.d.ts",
+      "import": "./dist/toaster.js"
     },
     "./accordion": {
       "types": "./dist/components/ui/accordion/accordion.d.ts",
@@ -146,6 +151,10 @@
     "./switch": {
       "types": "./dist/components/ui/switch/switch.d.ts",
       "import": "./dist/switch.js"
+    },
+    "./table": {
+      "types": "./dist/components/ui/table/table.d.ts",
+      "import": "./dist/table.js"
     },
     "./tabs": {
       "types": "./dist/components/ui/tabs/tabs.d.ts",

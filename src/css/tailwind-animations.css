@@ -1,0 +1,28 @@
+@theme {
+  --animate-toast-slide-up: toast-slide-up 200ms ease-out;
+  --animate-toast-slide-down: toast-slide-down 200ms ease-out;
+
+  @keyframes toast-slide-up {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes toast-slide-down {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+}

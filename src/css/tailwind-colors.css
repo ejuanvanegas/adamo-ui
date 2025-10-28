@@ -34,9 +34,11 @@
 
     /* Custom tokens */
     --color-warning: var(--warning);
-    --color-warning-foreground: var(--warning-foreground);
+    --color-warning-foreground: oklch(1 0 0);
     --color-success: var(--success);
-    --color-success-foreground: var(--success-foreground);
+    --color-success-foreground: oklch(1 0 0);
+    --color-waiting: var(--waiting);
+    --color-waiting-foreground: oklch(1 0 0);
 
     /* Primary palette tokens */
     --color-primary-25: var(--primary-25);
@@ -175,4 +177,18 @@
     --color-success-700: var(--success-700);
     --color-success-800: var(--success-800);
     --color-success-900: var(--success-900);
+
+    /* Waiting palette tokens */
+    --color-waiting: var(--waiting);
+    --color-waiting-25: var(--waiting-25);
+    --color-waiting-50: var(--waiting-50);
+    --color-waiting-100: var(--waiting-100);
+    --color-waiting-200: var(--waiting-200);
+    --color-waiting-300: var(--waiting-300);
+    --color-waiting-400: var(--waiting-400);
+    --color-waiting-500: var(--waiting-500);
+    --color-waiting-600: var(--waiting-600);
+    --color-waiting-700: var(--waiting-700);
+    --color-waiting-800: var(--waiting-800);
+    --color-waiting-900: var(--waiting-900);
 }

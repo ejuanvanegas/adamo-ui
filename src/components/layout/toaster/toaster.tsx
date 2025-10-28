@@ -1,10 +1,10 @@
-import React, { createContext, useState, useCallback } from "react";
 import type { AnimationEventHandler, PropsWithChildren } from "react";
+import { createContext, useState, useCallback, useEffect, createElement, useRef } from "react";
 import { Portal } from "@radix-ui/react-portal";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@src/lib/utils";
 
-const toasterVariants = cva(
+const toastVariants = cva(
   "adm:w-full adm:h-14 adm:p-4 adm:inline-flex adm:justify-center adm:items-center adm:gap-6 adm:shadow-sm",
   {
     variants: {
@@ -19,9 +19,9 @@ const toasterVariants = cva(
 );
 
 type ToastOptions = {
-  id?: string // Nuevo: id opcional
+  id?: string
   message: string
-  variant?: VariantProps<typeof Toaster>["variant"]
+  variant?: VariantProps<typeof Toast>["variant"]
   autoClose?: number
 };
 
@@ -30,14 +30,14 @@ type ToastContextType = {
   closeToast: () => void
 };
 
-const ToastContext = createContext<ToastContextType | undefined>(undefined);
+const ToasterContext = createContext<ToastContextType | undefined>(undefined);
 
-export function ToastProvider({ children }: PropsWithChildren) {
+function ToasterProvider({ children }: PropsWithChildren) {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const [variant, setVariant] = useState<VariantProps<typeof Toaster>["variant"]>("default");
+  const [variant, setVariant] = useState<VariantProps<typeof Toast>["variant"]>("default");
   const [autoClose, setAutoClose] = useState<number | undefined>(3000);
-  const [toastId, setToastId] = useState<string>(""); // Nuevo: id actual
+  const [toastId, setToastId] = useState<string>("");
 
   const [pendingToast, setPendingToast] = useState<ToastOptions | null>(null);
 
@@ -58,7 +58,7 @@ export function ToastProvider({ children }: PropsWithChildren) {
 
   const closeToast = useCallback(() => setOpen(false), []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!open && pendingToast) {
       setTimeout(() => {
         setMessage(pendingToast.message);
@@ -71,13 +71,13 @@ export function ToastProvider({ children }: PropsWithChildren) {
     }
   }, [open, pendingToast]);
 
-  return React.createElement(
-    ToastContext.Provider,
+  return createElement(
+    ToasterContext.Provider,
     { value: { showToast, closeToast } },
     [
       children,
-      React.createElement(Toaster, {
-        key: toastId, // <-- clave única por toast
+      createElement(Toast, {
+        key: toastId,
         message,
         variant,
         open,
@@ -88,31 +88,35 @@ export function ToastProvider({ children }: PropsWithChildren) {
   );
 }
 
-type ToasterProps = {
+type ToastProps = Readonly<{
   message: string
-  variant?: VariantProps<typeof toasterVariants>["variant"]
+  variant?: VariantProps<typeof toastVariants>["variant"]
   open?: boolean
   autoClose?: number
   onClose?: () => void
-};
+}>;
 
-function Toaster({
+function Toast({
   message,
   variant,
   open = true,
   autoClose,
   onClose,
-}: ToasterProps) {
-  const [visible, setVisible] = React.useState(open);
-  const [isClosing, setIsClosing] = React.useState(false);
-  const closeTimeout = React.useRef<NodeJS.Timeout | null>(null);
+}: ToastProps) {
+  const [visible, setVisible] = useState(open);
+  const [isClosing, setIsClosing] = useState(false);
 
-  // Reinicia animación y visibilidad cuando se muestra un nuevo toast
-  React.useEffect(() => {
+  const closeTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
     if (open) {
       setVisible(true);
       setIsClosing(false);
-      if (closeTimeout.current) clearTimeout(closeTimeout.current);
+
+      if (closeTimeout.current) {
+        clearTimeout(closeTimeout.current);
+      }
+
       if (autoClose && onClose) {
         closeTimeout.current = setTimeout(() => handleClose(), autoClose);
       }
@@ -124,6 +128,7 @@ function Toaster({
     return () => {
       if (closeTimeout.current) clearTimeout(closeTimeout.current);
     };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, autoClose, message]);
 
@@ -131,8 +136,10 @@ function Toaster({
     setTimeout(() => {
       setIsClosing(true);
     }, 100);
+
     closeTimeout.current = setTimeout(() => {
       setVisible(false);
+
       if (onClose) onClose();
     }, 200);
   };
@@ -150,14 +157,14 @@ function Toaster({
       <div onAnimationEnd={handleAnimationEnd} className="adm:fixed adm:bottom-0 adm:left-0 adm:w-full adm:z-50 adm:pointer-events-none">
         <div
           className={cn(
-            toasterVariants({ variant }),
+            toastVariants({ variant }),
             "adm:w-full adm:pointer-events-auto",
             isClosing
               ? "adm:animate-toast-slide-down"
               : "adm:animate-toast-slide-up",
           )}
         >
-          <div className="adm:flex-1 adm:text-center adm:text-sm adm:font-normal adm:leading-5 font-['Open_Sans']">
+          <div className="adm:flex-1 adm:text-center adm:text-sm">
             {message}
           </div>
         </div>
@@ -166,4 +173,10 @@ function Toaster({
   );
 };
 
-export { Toaster, ToastContext, type ToastOptions, type ToastContextType };
+export {
+  Toast,
+  ToasterProvider,
+  ToasterContext,
+  type ToastOptions,
+  type ToastContextType,
+};

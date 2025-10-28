@@ -15,6 +15,10 @@ const badgeVariants = cva(
           "adm:border-transparent adm:bg-primary adm:text-primary-foreground adm:[a&]:hover:bg-primary/90",
         "default-medium":
           "adm:border-transparent adm:bg-primary-50 adm:text-neutral-600 adm:[&>svg]:text-primary adm:[a&]:hover:bg-primary-100 adm:focus-visible:ring-primary/10 adm:dark:focus-visible:ring-primary/20 adm:dark:bg-primary-200 adm:dark:text-primary-800",
+        waiting:
+          "adm:border-transparent adm:bg-waiting adm:text-waiting-foreground adm:[a&]:hover:bg-waiting/90",
+        "waiting-medium":
+          "adm:border-transparent adm:bg-waiting-50 adm:text-neutral-600 adm:[&>svg]:text-waiting adm:[a&]:hover:bg-waiting-100 adm:focus-visible:ring-waiting/10 adm:dark:focus-visible:ring-waiting/20 adm:dark:bg-waiting-200 adm:dark:text-waiting-800",
         secondary:
           "adm:border-transparent adm:bg-secondary adm:text-secondary-foreground adm:[a&]:hover:bg-secondary/90",
         "success-medium":

@@ -1,34 +1,28 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Toaster, ToastProvider } from "./toaster";
-import { useToast } from "./use-toast";
 import type { VariantProps } from "class-variance-authority";
-import { Button } from "../../ui/button";
-import { useState } from "react";
+import { Toast, ToasterProvider } from "@src/components/layout/toaster";
+import { useToast } from "@src/components/layout/toaster/use-toast";
+import { Button } from "@src/components/ui/button";
+import { FileWarningIcon, GlobeIcon, SaveIcon, TrashIcon, UploadIcon } from "lucide-react";
 
-type ToasterVariant = NonNullable<VariantProps<typeof Toaster>["variant"]>;
+type ToasterVariant = NonNullable<VariantProps<typeof Toast>["variant"]>;
 
-const meta: Meta<typeof Toaster> = {
+const meta: Meta<typeof Toast> = {
   title: "Components/Toaster",
-  component: Toaster,
+  component: Toast,
   tags: ["autodocs"],
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["default", "success", "warning", "destructive"],
-    },
-    message: {
-      control: "text",
-      description: "Message to display in the toast",
-    },
-    autoClose: {
-      control: "number",
-      description: "Time in milliseconds before auto-closing",
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Displays toast notifications to provide feedback to users about the outcome of their actions.",
+      },
     },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Toaster>;
+type Story = StoryObj<typeof Toast>;
 
 const VARIANT_LABELS: Record<ToasterVariant, string> = {
   default: "Default",
@@ -37,7 +31,6 @@ const VARIANT_LABELS: Record<ToasterVariant, string> = {
   destructive: "Destructive",
 };
 
-// ========== INTERACTIVE PLAYGROUND ==========
 function ToasterPlaygroundStory() {
   const { showToast, closeToast } = useToast();
 
@@ -49,12 +42,13 @@ function ToasterPlaygroundStory() {
         : v === "destructive"
           ? "A critical error has occurred."
           : "This is a sample message.";
+
     showToast({ message: msg, variant: v });
   };
 
   return (
     <div style={{ minHeight: 300 }}>
-      <div className="adm:flex adm:gap-2 adm:mb-4 adm:flex-wrap">
+      <div className="adm:flex adm:gap-4 adm:mb-4 adm:flex-wrap">
         {(Object.keys(VARIANT_LABELS) as ToasterVariant[]).map((v) => (
           <Button
             key={v}
@@ -69,10 +63,6 @@ function ToasterPlaygroundStory() {
           Close Toast
         </Button>
       </div>
-      <div className="adm:mt-8 adm:text-xs adm:text-muted-foreground">
-        Click the buttons to show the toast in different variants.
-        The toast closes automatically after 3 seconds or you can close it manually.
-      </div>
     </div>
   );
 }
@@ -80,13 +70,19 @@ function ToasterPlaygroundStory() {
 export const Playground: Story = {
   name: "Interactive Playground",
   render: () => (
-    <ToastProvider>
+    <ToasterProvider>
       <ToasterPlaygroundStory />
-    </ToastProvider>
+    </ToasterProvider>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Interactive playground to test all toast variants. Click buttons to show toasts which auto-close after 3 seconds or can be manually closed.",
+      },
+    },
+  },
 };
 
-// ========== INDIVIDUAL VARIANTS ==========
 function VariantShowcase({ variant, message }: { variant: ToasterVariant, message: string }) {
   const { showToast } = useToast();
 
@@ -95,68 +91,94 @@ function VariantShowcase({ variant, message }: { variant: ToasterVariant, messag
       variant="outline"
       onClick={() => showToast({ message, variant })}
       type="button"
-      className="adm:w-full"
     >
       Show {VARIANT_LABELS[variant]} Toast
     </Button>
   );
 }
 
-export const DefaultVariant: Story = {
-  name: "Default Variant",
+export const Default: Story = {
+  name: "Default",
   render: () => (
-    <ToastProvider>
+    <ToasterProvider>
       <VariantShowcase
         variant="default"
         message="This is a general informational message"
       />
-    </ToastProvider>
+    </ToasterProvider>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "The default toast variant for general informational messages.",
+      },
+    },
+  },
 };
 
-export const SuccessVariant: Story = {
-  name: "Success Variant",
+export const Success: Story = {
+  name: "Success",
   render: () => (
-    <ToastProvider>
+    <ToasterProvider>
       <VariantShowcase
         variant="success"
         message="Changes saved successfully!"
       />
-    </ToastProvider>
+    </ToasterProvider>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "A toast with success styling for positive actions or confirmations.",
+      },
+    },
+  },
 };
 
-export const WarningVariant: Story = {
-  name: "Warning Variant",
+export const Warning: Story = {
+  name: "Warning",
   render: () => (
-    <ToastProvider>
+    <ToasterProvider>
       <VariantShowcase
         variant="warning"
         message="Your session will expire in 5 minutes"
       />
-    </ToastProvider>
+    </ToasterProvider>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "A toast with warning styling for cautionary messages that require attention.",
+      },
+    },
+  },
 };
 
-export const DestructiveVariant: Story = {
-  name: "Destructive Variant",
+export const Destructive: Story = {
+  name: "Destructive",
   render: () => (
-    <ToastProvider>
+    <ToasterProvider>
       <VariantShowcase
         variant="destructive"
         message="Error: Unable to complete the operation"
       />
-    </ToastProvider>
+    </ToasterProvider>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "A toast with destructive styling for errors or critical messages.",
+      },
+    },
+  },
 };
 
-// ========== CUSTOM DURATION ==========
 function CustomDurationStory() {
   const { showToast } = useToast();
 
   return (
     <div className="adm:space-y-4">
-      <div className="adm:flex adm:gap-2 adm:flex-wrap">
+      <div className="adm:flex adm:gap-4 adm:flex-wrap">
         <Button
           variant="outline"
           onClick={() => showToast({
@@ -198,23 +220,26 @@ function CustomDurationStory() {
           No auto-close
         </Button>
       </div>
-      <p className="adm:text-xs adm:text-muted-foreground">
-        Try different auto-close durations. The last toast won't close automatically.
-      </p>
     </div>
   );
 }
 
 export const CustomDuration: Story = {
-  name: "Custom Durations",
+  name: "Custom duration",
   render: () => (
-    <ToastProvider>
+    <ToasterProvider>
       <CustomDurationStory />
-    </ToastProvider>
+    </ToasterProvider>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Demonstrates toasts with different auto-close durations. The last toast requires manual dismissal.",
+      },
+    },
+  },
 };
 
-// ========== QUEUED TOASTS ==========
 function QueuedToastsStory() {
   const { showToast } = useToast();
 
@@ -233,24 +258,26 @@ function QueuedToastsStory() {
       <Button onClick={showMultiple} variant="outline">
         Show 3 Toasts in Sequence
       </Button>
-      <p className="adm:text-xs adm:text-muted-foreground">
-        Toasts will be displayed one after another automatically.
-        The system handles an internal queue to prevent overlapping.
-      </p>
     </div>
   );
 }
 
 export const QueuedToasts: Story = {
-  name: "Queued Toasts",
+  name: "Queued toasts",
   render: () => (
-    <ToastProvider>
+    <ToasterProvider>
       <QueuedToastsStory />
-    </ToastProvider>
+    </ToasterProvider>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Demonstrates the internal queue system that displays multiple toasts sequentially to prevent overlapping.",
+      },
+    },
+  },
 };
 
-// ========== REAL WORLD EXAMPLES ==========
 function RealWorldExamplesStory() {
   const { showToast } = useToast();
 
@@ -296,46 +323,49 @@ function RealWorldExamplesStory() {
 
   return (
     <div className="adm:space-y-4">
-      <div className="adm:grid adm:grid-cols-2 adm:gap-2">
+      <div className="adm:flex adm:gap-4">
         <Button variant="outline" onClick={simulateFormSubmit}>
-          💾 Save Form
+          <SaveIcon /> Save Form
         </Button>
         <Button variant="outline" onClick={simulateDelete}>
-          🗑️ Delete Item
+          <TrashIcon /> Delete Item
         </Button>
         <Button variant="outline" onClick={simulateUpload}>
-          📤 Upload File
+          <UploadIcon /> Upload File
         </Button>
         <Button variant="outline" onClick={simulateConnection}>
-          🌐 Connection Error
+          <GlobeIcon /> Connection Error
         </Button>
         <Button variant="outline" onClick={simulateValidation}>
-          ⚠️ Validation Error
+          <FileWarningIcon /> Validation Error
         </Button>
       </div>
-      <p className="adm:text-xs adm:text-muted-foreground">
-        Examples of usage in real-world application scenarios.
-      </p>
     </div>
   );
 }
 
 export const RealWorldExamples: Story = {
-  name: "Real World Use Cases",
+  name: "Real world use cases",
   render: () => (
-    <ToastProvider>
+    <ToasterProvider>
       <RealWorldExamplesStory />
-    </ToastProvider>
+    </ToasterProvider>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Examples of toast usage in real-world application scenarios like form submissions, file operations, and error handling.",
+      },
+    },
+  },
 };
 
-// ========== LONG MESSAGES ==========
 function LongMessagesStory() {
   const { showToast } = useToast();
 
   return (
     <div className="adm:space-y-4">
-      <div className="adm:flex adm:flex-col adm:gap-2">
+      <div className="adm:flex adm:gap-4">
         <Button
           variant="outline"
           onClick={() => showToast({
@@ -365,23 +395,26 @@ function LongMessagesStory() {
           Long Message
         </Button>
       </div>
-      <p className="adm:text-xs adm:text-muted-foreground">
-        Test how the toast behaves with different message lengths.
-      </p>
     </div>
   );
 }
 
 export const LongMessages: Story = {
-  name: "Different Message Lengths",
+  name: "Different message lengths",
   render: () => (
-    <ToastProvider>
+    <ToasterProvider>
       <LongMessagesStory />
-    </ToastProvider>
+    </ToasterProvider>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Tests how the toast component handles messages of different lengths, from short to very long text content.",
+      },
+    },
+  },
 };
 
-// ========== MANUAL CLOSE ==========
 function ManualCloseStory() {
   const { showToast, closeToast } = useToast();
 
@@ -395,7 +428,7 @@ function ManualCloseStory() {
 
   return (
     <div className="adm:space-y-4">
-      <div className="adm:flex adm:gap-2">
+      <div className="adm:flex adm:gap-4">
         <Button variant="outline" onClick={showPersistent}>
           Show Persistent Toast
         </Button>
@@ -403,65 +436,22 @@ function ManualCloseStory() {
           Close Toast
         </Button>
       </div>
-      <p className="adm:text-xs adm:text-muted-foreground">
-        This toast will remain visible until manually closed.
-        Useful for important messages that require user acknowledgment.
-      </p>
     </div>
   );
 }
 
 export const ManualClose: Story = {
-  name: "Manual Close",
+  name: "Manual close",
   render: () => (
-    <ToastProvider>
+    <ToasterProvider>
       <ManualCloseStory />
-    </ToastProvider>
+    </ToasterProvider>
   ),
-};
-
-// ========== VARIANT COMPARISON ==========
-function VariantComparisonStory() {
-  const { showToast } = useToast();
-  const [currentVariant, setCurrentVariant] = useState<ToasterVariant>("default");
-
-  const showCurrent = () => {
-    showToast({
-      message: `Toast variant: ${VARIANT_LABELS[currentVariant]}`,
-      variant: currentVariant,
-    });
-  };
-
-  return (
-    <div className="adm:space-y-4">
-      <div className="adm:flex adm:gap-2 adm:items-center adm:flex-wrap">
-        <span className="adm:text-sm">Select variant:</span>
-        {(Object.keys(VARIANT_LABELS) as ToasterVariant[]).map((v) => (
-          <Button
-            key={v}
-            variant={currentVariant === v ? "default" : "outline"}
-            onClick={() => setCurrentVariant(v)}
-            size="sm"
-          >
-            {VARIANT_LABELS[v]}
-          </Button>
-        ))}
-      </div>
-      <Button onClick={showCurrent} className="adm:w-full">
-        Show Selected Toast
-      </Button>
-      <p className="adm:text-xs adm:text-muted-foreground">
-        Select a variant and show the toast to compare styles.
-      </p>
-    </div>
-  );
-}
-
-export const VariantComparison: Story = {
-  name: "Variant Comparison",
-  render: () => (
-    <ToastProvider>
-      <VariantComparisonStory />
-    </ToastProvider>
-  ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Demonstrates persistent toasts that remain visible until manually closed, useful for important messages requiring user acknowledgment.",
+      },
+    },
+  },
 };

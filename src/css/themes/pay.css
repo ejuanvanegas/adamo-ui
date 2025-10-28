@@ -34,9 +34,6 @@
   --sidebar-ring: var(--pay-500);
 
   /* Custom vars */
-  --warning-foreground: oklch(1 0 0);
-  --success-foreground: oklch(1 0 0);
-
   --primary-25: var(--pay-25);
   --primary-50: var(--pay-50);
   --primary-100: var(--pay-100);
@@ -84,8 +81,4 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: var(--pay-500);
-
-  /* Custom vars */
-  --warning-foreground: oklch(1 0 0);
-  --success-foreground: oklch(1 0 0);
 }

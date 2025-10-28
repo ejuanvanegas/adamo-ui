@@ -169,6 +169,36 @@ export const DestructiveMedium: Story = {
   },
 };
 
+export const Waiting: Story = {
+  name: "Waiting",
+  args: { variant: "waiting" },
+  render: function Render(args) {
+    return <Badge {...args}>Waiting</Badge>;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A badge with waiting styling for pending actions or states.",
+      },
+    },
+  },
+};
+
+export const WaitingMedium: Story = {
+  name: "Waiting medium",
+  args: { variant: "waiting-medium" },
+  render: function Render(args) {
+    return <Badge {...args}>Waiting Medium</Badge>;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A lighter version of the waiting badge with subtle waiting styling.",
+      },
+    },
+  },
+};
+
 export const Muted: Story = {
   name: "Muted",
   args: { variant: "muted" },
@@ -229,6 +259,8 @@ export const VariantsAndSizes: Story = {
           <Badge variant="warning-medium">Warning Medium</Badge>
           <Badge variant="destructive">Destructive</Badge>
           <Badge variant="destructive-medium">Destructive Medium</Badge>
+          <Badge variant="waiting">Waiting</Badge>
+          <Badge variant="waiting-medium">Waiting Medium</Badge>
           <Badge variant="muted">Muted</Badge>
           <Badge variant="outline">Outline</Badge>
         </div>
@@ -242,6 +274,8 @@ export const VariantsAndSizes: Story = {
           <Badge size="lg" variant="warning-medium">Warning Medium</Badge>
           <Badge size="lg" variant="destructive">Destructive</Badge>
           <Badge size="lg" variant="destructive-medium">Destructive Medium</Badge>
+          <Badge size="lg" variant="waiting">Waiting</Badge>
+          <Badge size="lg" variant="waiting-medium">Waiting Medium</Badge>
           <Badge size="lg" variant="muted">Muted</Badge>
           <Badge size="lg" variant="outline">Outline</Badge>
         </div>

@@ -138,4 +138,18 @@
   --success-800: oklch(0.4479 0.1083 151.33);
   --success-900: oklch(0.3925 0.0896 152.54);
   --success: var(--success-500);
+
+  /* Waiting color palette */
+  --waiting-25: oklch(0.9885 0.0063 236.62);
+  --waiting-50: oklch(0.9771 0.0125 236.62);
+  --waiting-100: oklch(0.9514 0.025 236.62);
+  --waiting-200: oklch(0.9011 0.05 236.62);
+  --waiting-300: oklch(0.8297 0.0875 236.62);
+  --waiting-400: oklch(0.7586 0.125 236.62);
+  --waiting-500: oklch(0.6861 0.1625 236.62);
+  --waiting-600: oklch(0.5934 0.1438 236.62);
+  --waiting-700: oklch(0.5029 0.125 236.62);
+  --waiting-800: oklch(0.4438 0.1063 236.62);
+  --waiting-900: oklch(0.3917 0.0875 236.62);
+  --waiting: var(--waiting-500);
 }
