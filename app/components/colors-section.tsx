@@ -11,6 +11,7 @@ const colors = [
   "error",
   "warning",
   "success",
+  "waiting",
 ];
 
 const variants = [

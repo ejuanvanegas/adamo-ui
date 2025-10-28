@@ -26,6 +26,8 @@ const VARS = [
   "warning-foreground",
   "success",
   "success-foreground",
+  "waiting",
+  "waiting-foreground",
   "border",
   "input",
   "ring",
@@ -86,7 +88,7 @@ export function HowToUseTokens({ className, ...props }: HowToUseTokensProps) {
         </div>
       </div>
       <p className="adm:mb-4">
-        Esto sucede para variables que configura cada tema. Por lo tanto, evitar
+        Esto sucede para las variables en cada tema. Por lo tanto, evitar
         al máximo utilizar tokens arbitrarios como {TW_PREFIX}bg-error-500,{" "}
         {TW_PREFIX}warning-500 y demás. Para eso ya hay definidos tokens como{" "}
         {TW_PREFIX}bg-primary, {TW_PREFIX}bg-destructive, {TW_PREFIX}bg-warning,{" "}
