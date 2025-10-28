@@ -36,12 +36,6 @@ const meta = {
   title: "Components/Alert",
   component: Alert,
   tags: ["autodocs"],
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["default", "destructive", "success", "warning"],
-    },
-  },
 } satisfies Meta<typeof Alert>;
 
 export default meta;

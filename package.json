@@ -72,6 +72,10 @@
       "types": "./dist/components/ui/collapsible/collapsible.d.ts",
       "import": "./dist/collapsible.js"
     },
+    "./combobox": {
+      "types": "./dist/components/ui/combobox/combobox.d.ts",
+      "import": "./dist/combobox.js"
+    },
     "./context-menu": {
       "types": "./dist/components/ui/context-menu/context-menu.d.ts",
       "import": "./dist/context-menu.js"
@@ -204,7 +208,8 @@
     "date-fns": "^4.1.0",
     "react": "^19.1.1",
     "react-day-picker": "^9.11.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "cmdk": "^1.1.1"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",

@@ -5,6 +5,8 @@
     "**/src/index.css": "tailwindcss",
     "**/src/custom-layered-index.css": "tailwindcss",
   },
+  // Imports
+  "typescript.preferences.importModuleSpecifier": "non-relative",
   // ESLint + Formatting
   "eslint.format.enable": true,
   "editor.formatOnSave": false,
@@ -37,6 +39,7 @@
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "cSpell.words": [
     "autodocs",
+    "cmdk",
     "topbar",
     "uidotdev",
     "usehooks"

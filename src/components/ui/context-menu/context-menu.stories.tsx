@@ -34,7 +34,6 @@ const meta: Meta<typeof ContextMenu> = {
   title: "Components/Context Menu",
   component: ContextMenu,
   tags: ["autodocs"],
-  argTypes: {},
 };
 
 export default meta;

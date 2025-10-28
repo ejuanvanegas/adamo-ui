@@ -53,6 +53,7 @@ export default defineConfig({
         card: path.resolve(__dirname, "src/components/ui/card/index.ts"),
         checkbox: path.resolve(__dirname, "src/components/ui/checkbox/index.ts"),
         collapsible: path.resolve(__dirname, "src/components/ui/collapsible/index.ts"),
+        combobox: path.resolve(__dirname, "src/components/ui/combobox/index.ts"),
         "context-menu": path.resolve(__dirname, "src/components/ui/context-menu/index.ts"),
         dialog: path.resolve(__dirname, "src/components/ui/dialog/index.ts"),
         "dropdown-menu": path.resolve(__dirname, "src/components/ui/dropdown-menu/index.ts"),

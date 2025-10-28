@@ -21,7 +21,7 @@ function Checkbox({
         data-slot="checkbox-indicator"
         className="adm:group adm:grid adm:place-content-center adm:text-current adm:transition-none"
       >
-        <CheckIcon className={cn("adm:size-3.5", "adm:group-data-[state=indeterminate]:hidden")} />
+        <CheckIcon className={cn("adm:size-3.5 adm:text-white", "adm:group-data-[state=indeterminate]:hidden")} />
         <MinusIcon className={cn("adm:size-3.5 adm:text-primary", "adm:group-data-[state=checked]:hidden")} />
 
       </CheckboxPrimitive.Indicator>
