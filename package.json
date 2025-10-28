@@ -20,7 +20,7 @@
     "./tailwind-spacing.css": "./dist/tailwind-spacing.css",
     "./tailwind-radius.css": "./dist/tailwind-radius.css",
     "./use-portal-container": {
-      "types": "./dist/hooks/use-portal-container/use-portal-container.d.ts",
+      "types": "./dist/hooks/use-portal-container.d.ts",
       "import": "./dist/use-portal-container.js"
     },
     "./sidebar": {
