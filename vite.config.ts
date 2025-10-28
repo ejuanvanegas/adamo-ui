@@ -68,6 +68,7 @@ export default defineConfig({
         radius: path.resolve(__dirname, "src/css/radius.css"),
         space: path.resolve(__dirname, "src/css/space.css"),
         themes: path.resolve(__dirname, "src/css/themes.css"),
+        toaster: path.resolve(__dirname, "src/components/layout/toaster/index.ts"),
         "tailwind-theme": path.resolve(__dirname, "src/css/tailwind-theme.css"),
         "tailwind-fonts": path.resolve(__dirname, "src/css/tailwind-fonts.css"),
         "tailwind-colors": path.resolve(__dirname, "src/css/tailwind-colors.css"),
