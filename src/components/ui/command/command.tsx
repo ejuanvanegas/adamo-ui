@@ -99,12 +99,13 @@ function CommandList({
 }
 
 function CommandEmpty({
+  className,
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
-      className="adm:py-6 adm:text-center adm:text-sm"
+      className={cn("adm:py-6 adm:text-center adm:text-sm", className)}
       {...props}
     />
   );
@@ -118,7 +119,7 @@ function CommandGroup({
     <CommandPrimitive.Group
       data-slot="command-group"
       className={cn(
-        "adm:text-foreground adm:[&_[cmdk-group-heading]]:text-muted-foreground adm:overflow-hidden adm:p-1 adm:[&_[cmdk-group-heading]]:px-2 adm:[&_[cmdk-group-heading]]:py-1.5 adm:[&_[cmdk-group-heading]]:text-xs adm:[&_[cmdk-group-heading]]:font-medium",
+        "adm:text-foreground adm:overflow-hidden adm:p-1 adm:**:**:**:**:**:**:[&_[cmdk-group-heading]]:text-muted-foreground adm:**:**:**:**:**:**:[&_[cmdk-group-heading]]:px-2 adm:**:**:**:**:**:**:[&_[cmdk-group-heading]]:py-1.5 adm:**:**:**:**:**:**:[&_[cmdk-group-heading]]:text-xs adm:**:**:**:**:**:**:[&_[cmdk-group-heading]]:font-medium",
         className,
       )}
       {...props}
