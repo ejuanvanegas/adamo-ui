@@ -40,9 +40,13 @@
   "cSpell.words": [
     "autodocs",
     "cmdk",
+    "shadcn",
+    "tailwindcss",
     "topbar",
     "uidotdev",
-    "usehooks"
+    "usehooks",
+    "wdth",
+    "wght"
   ],
   // Spell checking
   "cSpell.language": "en,es-ES"
