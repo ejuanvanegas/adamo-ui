@@ -1,23 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@src/components/ui/accordionV2/accordionV2";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@src/components/ui/accordion-rounded/accordion-rounded";
 import { AlertCircle, CheckCircle, Info, XCircle } from "lucide-react";
 import { Badge } from "@src/components/ui/badge";
 
 const meta = {
-  title: "Components/AccordionV2",
+  title: "Components/Accordion rounded",
   component: Accordion,
   tags: ["autodocs"],
-  argTypes: {
-    type: {
-      control: "radio",
-      options: ["single", "multiple"],
-      description: "Determines whether one or multiple items can be opened at the same time",
-    },
-    collapsible: {
-      control: "boolean",
-      description: "When type is 'single', allows closing the open item",
-    },
-  },
 } satisfies Meta<typeof Accordion>;
 
 export default meta;
@@ -47,7 +36,7 @@ export const Default: Story = {
 };
 
 export const WithWarningBadge: Story = {
-  name: "With Warning Badge",
+  name: "With warning badge",
   args: { type: "single", collapsible: true },
   render: function Render(args) {
     return (
@@ -78,7 +67,7 @@ export const WithWarningBadge: Story = {
 };
 
 export const WithSuccessBadge: Story = {
-  name: "With Success Badge",
+  name: "With success badge",
   args: { type: "single", collapsible: true },
   render: function Render(args) {
     return (
@@ -109,7 +98,7 @@ export const WithSuccessBadge: Story = {
 };
 
 export const WithErrorBadge: Story = {
-  name: "With Error Badge",
+  name: "With error badge",
   args: { type: "single", collapsible: true },
   render: function Render(args) {
     return (
@@ -140,7 +129,7 @@ export const WithErrorBadge: Story = {
 };
 
 export const WithInfoBadge: Story = {
-  name: "With Info Badge",
+  name: "With info badge",
   args: { type: "single", collapsible: true },
   render: function Render(args) {
     return (
@@ -171,7 +160,7 @@ export const WithInfoBadge: Story = {
 };
 
 export const WithTextOnlyBadge: Story = {
-  name: "With Text-Only Badge",
+  name: "With text-only badge",
   args: { type: "single", collapsible: true },
   render: function Render(args) {
     return (
@@ -201,7 +190,7 @@ export const WithTextOnlyBadge: Story = {
 };
 
 export const MultipleItems: Story = {
-  name: "Multiple Items (Single Type)",
+  name: "Multiple items (Single type)",
   args: { type: "single", collapsible: true },
   render: function Render(args) {
     return (
@@ -269,7 +258,7 @@ export const MultipleItems: Story = {
 };
 
 export const MultipleType: Story = {
-  name: "Multiple Open Items",
+  name: "Multiple open items",
   args: { type: "multiple" },
   render: function Render(args) {
     return (
@@ -328,7 +317,7 @@ export const MultipleType: Story = {
 };
 
 export const DefaultOpen: Story = {
-  name: "Default Open State",
+  name: "Default open state",
   args: { type: "single", collapsible: true, defaultValue: "item-1" },
   render: function Render(args) {
     return (
@@ -359,7 +348,7 @@ export const DefaultOpen: Story = {
 };
 
 export const RichContent: Story = {
-  name: "Rich Content Example",
+  name: "Rich content example",
   args: { type: "single", collapsible: true },
   render: function Render(args) {
     return (
@@ -408,7 +397,7 @@ export const RichContent: Story = {
 };
 
 export const MixedStates: Story = {
-  name: "Mixed Badge States",
+  name: "Mixed badge states",
   args: { type: "single", collapsible: true },
   render: function Render(args) {
     return (
@@ -491,7 +480,7 @@ export const MixedStates: Story = {
 };
 
 export const CompactVersion: Story = {
-  name: "Compact Layout",
+  name: "Compact layout",
   args: { type: "single", collapsible: true },
   render: function Render(args) {
     return (

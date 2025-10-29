@@ -44,6 +44,7 @@ export default defineConfig({
         toaster: path.resolve(__dirname, "src/components/layout/toaster/index.ts"),
         // UI components
         accordion: path.resolve(__dirname, "src/components/ui/accordion/index.ts"),
+        "accordion-rounded": path.resolve(__dirname, "src/components/ui/accordion-rounded/index.ts"),
         alert: path.resolve(__dirname, "src/components/ui/alert/index.ts"),
         avatar: path.resolve(__dirname, "src/components/ui/avatar/index.ts"),
         badge: path.resolve(__dirname, "src/components/ui/badge/index.ts"),

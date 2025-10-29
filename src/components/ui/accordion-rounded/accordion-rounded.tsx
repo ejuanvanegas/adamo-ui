@@ -26,10 +26,10 @@ function AccordionItem({
   );
 }
 
-interface AccordionTriggerProps extends React.ComponentProps<typeof AccordionPrimitive.Trigger> {
+type AccordionTriggerProps = React.ComponentProps<typeof AccordionPrimitive.Trigger> & {
   title?: string
   badge?: React.ReactNode
-}
+};
 
 function AccordionTrigger({
   className,
@@ -39,7 +39,7 @@ function AccordionTrigger({
   ...props
 }: AccordionTriggerProps) {
   return (
-    <AccordionPrimitive.Header className="adm:flex adm:h-16">
+    <AccordionPrimitive.Header className="adm:flex adm:h-14">
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
@@ -56,7 +56,7 @@ function AccordionTrigger({
             {badge}
           </div>
         )}
-        <div className="adm:flex adm:w-14 adm:items-center adm:justify-end adm:shrink-0">
+        <div className="adm:flex adm:items-center adm:justify-end adm:shrink-0">
           <Plus className="adm:h-4 adm:w-4 adm:text-neutrals-500 adm:transition-transform adm:duration-200 adm:group-data-[state=open]:hidden" />
           <Minus className="adm:h-4 adm:w-4 adm:text-neutrals-500 adm:hidden adm:group-data-[state=open]:block" />
         </div>

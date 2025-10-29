@@ -1,6 +1,6 @@
 {
   "name": "@eatteer/ui",
-  "version": "0.0.38",
+  "version": "1.0.0",
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
@@ -35,6 +35,10 @@
     "./accordion": {
       "types": "./dist/components/ui/accordion/accordion.d.ts",
       "import": "./dist/accordion.js"
+    },
+    "./accordion-rounded": {
+      "types": "./dist/components/ui/accordion-rounded/accordion-rounded.d.ts",
+      "import": "./dist/accordion-rounded.js"
     },
     "./alert": {
       "types": "./dist/components/ui/alert/alert.d.ts",
