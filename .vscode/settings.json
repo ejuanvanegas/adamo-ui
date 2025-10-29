@@ -43,5 +43,7 @@
     "topbar",
     "uidotdev",
     "usehooks"
-  ]
+  ],
+  // Spell checking
+  "cSpell.language": "en,es-ES"
 }
