@@ -1,6 +1,6 @@
 {
   "name": "@adamosuiteservices/ui",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
@@ -26,7 +26,7 @@
     },
     "./lib": {
       "types": "./dist/lib/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/lib.js"
     },
     "./sidebar": {
       "types": "./dist/components/layout/sidebar/sidebar.d.ts",
