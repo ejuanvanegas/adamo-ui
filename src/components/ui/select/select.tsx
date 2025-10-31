@@ -60,7 +60,7 @@ function SelectContent({
       <SelectPrimitive.Content
         data-slot="select-content"
         className={cn(
-          "adm:bg-popover adm:text-popover-foreground adm:data-[state=open]:animate-in adm:data-[state=closed]:animate-out adm:data-[state=closed]:fade-out-0 adm:data-[state=open]:fade-in-0 adm:data-[state=closed]:zoom-out-95 adm:data-[state=open]:zoom-in-95 adm:data-[side=bottom]:slide-in-from-top-2 adm:data-[side=left]:slide-in-from-right-2 adm:data-[side=right]:slide-in-from-left-2 adm:data-[side=top]:slide-in-from-bottom-2 adm:relative adm:z-50 adm:max-h-(--radix-select-content-available-height) adm:min-w-[8rem] adm:origin-(--radix-select-content-transform-origin) adm:overflow-x-hidden adm:overflow-y-auto adm:rounded-md adm:border adm:shadow-md",
+          "adm:bg-popover adm:text-popover-foreground adm:data-[state=open]:animate-in adm:data-[state=closed]:animate-out adm:data-[state=closed]:fade-out-0 adm:data-[state=open]:fade-in-0 adm:data-[state=closed]:zoom-out-95 adm:data-[state=open]:zoom-in-95 adm:data-[side=bottom]:slide-in-from-top-2 adm:data-[side=left]:slide-in-from-right-2 adm:data-[side=right]:slide-in-from-left-2 adm:data-[side=top]:slide-in-from-bottom-2 adm:relative adm:z-50 adm:max-h-(--radix-select-content-available-height) adm:min-w-[8rem] adm:origin-(--radix-select-content-transform-origin) adm:overflow-x-hidden adm:overflow-y-auto adm:rounded-md adm:border adm:shadow-xs",
           position === "popper"
           && "adm:data-[side=bottom]:translate-y-1 adm:data-[side=left]:-translate-x-1 adm:data-[side=right]:translate-x-1 adm:data-[side=top]:-translate-y-1",
           className,

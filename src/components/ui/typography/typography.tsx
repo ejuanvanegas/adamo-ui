@@ -2,7 +2,7 @@ import { cn } from "@src/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
 
-const typographyVariants = cva("", {
+const typographyVariants = cva("adm:text-neutrals-700", {
   variants: {
     variant: {
       lg: "adm:text-lg adm:leading-1",

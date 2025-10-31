@@ -62,7 +62,7 @@ function DialogContent({
         data-theme={theme}
         data-slot="dialog-content"
         className={cn(
-          "adm:bg-background adm:data-[state=open]:animate-in adm:data-[state=closed]:animate-out adm:data-[state=closed]:fade-out-0 adm:data-[state=open]:fade-in-0 adm:data-[state=closed]:zoom-out-95 adm:data-[state=open]:zoom-in-95 adm:fixed adm:top-[50%] adm:left-[50%] adm:z-50 adm:grid adm:w-full adm:max-w-[calc(100%-2rem)] adm:translate-x-[-50%] adm:translate-y-[-50%] adm:gap-4 adm:rounded-lg adm:border adm:p-6 adm:shadow-lg adm:duration-200 adm:sm:max-w-lg",
+          "adm:bg-background adm:data-[state=open]:animate-in adm:data-[state=closed]:animate-out adm:data-[state=closed]:fade-out-0 adm:data-[state=open]:fade-in-0 adm:data-[state=closed]:zoom-out-95 adm:data-[state=open]:zoom-in-95 adm:fixed adm:top-[50%] adm:left-[50%] adm:z-50 adm:grid adm:w-full adm:max-w-[calc(100%-2rem)] adm:translate-x-[-50%] adm:translate-y-[-50%] adm:gap-4 adm:rounded-lg adm:border adm:p-6 adm:shadow-xs adm:duration-200 adm:sm:max-w-lg",
           className,
         )}
         {...props}

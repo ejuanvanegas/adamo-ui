@@ -357,7 +357,7 @@ export const CustomStyling: Story = {
         selectedFeedback="check"
         classNames={{
           trigger: "adm:border-2 adm:border-blue-500 adm:rounded-lg adm:w-64",
-          popover: "adm:border adm:border-blue-200 adm:shadow-lg",
+          popover: "adm:border adm:border-blue-200 adm:shadow-xs",
           command: "adm:rounded-lg",
           input: "adm:border-none adm:focus:ring-0 adm:placeholder:text-blue-400",
           item: "adm:rounded adm:px-3 adm:py-2 hover:adm:bg-blue-50 adm:text-sm",
