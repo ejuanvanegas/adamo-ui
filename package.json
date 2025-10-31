@@ -1,6 +1,6 @@
 {
   "name": "@adamosuiteservices/ui",
-  "version": "1.1.2",
+  "version": "1.2.2",
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
@@ -23,6 +23,10 @@
     "./use-portal-container": {
       "types": "./dist/hooks/use-portal-container.d.ts",
       "import": "./dist/use-portal-container.js"
+    },
+    "./lib": {
+      "types": "./dist/lib/index.d.ts",
+      "import": "./dist/index.js"
     },
     "./sidebar": {
       "types": "./dist/components/layout/sidebar/sidebar.d.ts",

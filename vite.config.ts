@@ -39,6 +39,8 @@ export default defineConfig({
         "tailwind-radius": path.resolve(__dirname, "src/css/tailwind-radius.css"),
         // Hooks
         "use-portal-container": path.resolve(__dirname, "src/hooks/use-portal-container.ts"),
+        // Lib
+        lib: path.resolve(__dirname, "src/lib/index.ts"),
         // Layout components
         sidebar: path.resolve(__dirname, "src/components/layout/sidebar/index.ts"),
         toaster: path.resolve(__dirname, "src/components/layout/toaster/index.ts"),
